@@ -156,7 +156,8 @@ echo " OpenGeo Suite: http://$IPA:8080/dashboard">>logg.txt
 echo " pgAdminIII (user/pass): postgres/*******">>logg.txt
 echo "========================================================================"
 echo " Spara qgis-projekt i qgis katalogen, anropa dessa via WMS/WFS"
-echo " http://[IP]/cgi-bin/qgis_mapserv.fcgi?VERSION=1.3.0&map=/qgis/fil.qgs"
+echo " http://$IPA/cgi-bin/qgis_mapserv.fcgi?VERSION=1.3.0&map=/qgis/fil.qgs"
+echo " http://$IPA/cgi-bin/qgis_mapserv.fcgi?VERSION=1.3.0&map=/qgis/fil.qgs">>logg.txt
 echo "========================================================================"
 echo " Om något inte fungerar så kör skriptet en gång till."
 echo "========================================================================"
