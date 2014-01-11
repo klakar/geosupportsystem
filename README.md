@@ -9,7 +9,7 @@ The script is in Swedish but works fine in any language.
 
 To use the script just run it on a Linux Ubuntu 12.04 Server as root:
 
-<i>sudo su
+<i>sudo su<br>
 sh geoserver.sh</i>
 
 Use the "RAW" link and wget to copy the script to the server first:
