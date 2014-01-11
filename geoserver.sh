@@ -111,9 +111,13 @@ passwd postgres
 echo "Om det gick bra så tryck valfri tangent, annars ctrl-c"
 read d
 clear
-echo "Sätt nytt lösenord för användaren i PSQL:"
+echo "Sätt nytt lösenord för användaren i PSQL."
+echo ""
+echo "Skriv in följande:"
 echo "\password postgres"
-echo "Avsluta med \q"
+echo ""
+echo "Ange nytt lösenord vid prompten."
+echo "Avsluta/fortsätt sedan med \q"
 sudo -s -u postgres psql
 clear
 # Uppdatera systemet, igen...
