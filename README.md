@@ -27,3 +27,16 @@ När skriptet körs så installeras:
 - Windows Typsnitt
 
 Dessutom görs grundläggande inställningar för utdelade kataloger, PostGIS, med mera.
+
+Andra skript...
+===============
+
+<b>Nuxeo DMS</b>
+
+<i>wget https://github.com/klakar/geosupportsystem/raw/master/nuxeo_dms.sh<br>
+sh nuxeo_dms.sh</i>
+
+<b>Alfresco DMS</b>
+
+<i>wget https://github.com/klakar/geosupportsystem/raw/master/alfresco_dms.sh<br>
+sh alfresco_dms.sh</i>
