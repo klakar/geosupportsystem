@@ -28,6 +28,9 @@ apt-get update
 # Installera Nuxeo
 apt-get -y install nuxeo
 
+# Lägg till LibreOffice stöd
+apt-get -y install libreoffice-java-common
+
 # Klartecken till användaren
 clear
 echo "***********************************************"
