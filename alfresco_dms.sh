@@ -26,6 +26,6 @@ sudo ./alfresco-community-4.2.e-installer-linux-x64.bin --mode text
 # Färdig
 clear
 echo "*****************************************************"
-echo " Logga in med angivna uppggifter på:"
+echo " Logga in med 'admin' och valt lösenord på:"
 echo " http://$IPA:8080/share/"
 echo "*****************************************************"
