@@ -43,7 +43,7 @@ sh alfresco_dms.sh</i>
 
 <b>Ladda upp bilder på webbserver</b>
 
-Först så behövs en webbserver med PHP och en underkatalog kallat "upload" där användarna har skrivrättigheter (chmod 777 upload).
+Först så behövs en webbserver med PHP och en underkatalog kallad "upload" där användarna har skrivrättigheter (chmod 777 upload).
 
 Kopiera sedan filerna ladda.htm och ladda.php till webbservern och anropa ladda.htm via en webbläsare.
 
