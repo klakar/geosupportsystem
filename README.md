@@ -40,3 +40,14 @@ sh nuxeo_dms.sh</i>
 
 <i>wget https://github.com/klakar/geosupportsystem/raw/master/alfresco_dms.sh<br>
 sh alfresco_dms.sh</i>
+
+<b>Ladda upp bilder på webbserver</b>
+
+Först så behövs en webbserver med PHP och en underkatalog kallat "upload" där användarna har skrivrättigheter (chmod 777 upload).
+
+Kopiera sedan filerna ladda.htm och ladda.php till webbservern och anropa ladda.htm via en webbläsare.
+
+<i>sudo mkdir upload<br>
+sudo chmod 777 upload<br>
+sudo wget https://github.com/klakar/geosupportsystem/raw/master/ladda.htm<br>
+sudo wget https://github.com/klakar/geosupportsystem/raw/master/ladda.php</i>
