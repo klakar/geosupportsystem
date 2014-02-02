@@ -1,21 +1,40 @@
 <html>
 <head>
+<meta charset="UTF8">
 <style>
+body {
+	font-family: Arial
+	}
 #rubrik {
-	font-family: Arial;
-	font-size: 24pt
+	font-size: 28pt;
+	color: #226699;
+	font-weight: bold
+	}
+#urubrik {
+	font-size:14pt
+	}
+table {
+	padding: 5;
+	margin: 5;
+	background: #226699
+	}
+td {
+	padding: 10;
+	background: #FFFFFF
 	}
 </style>
 </html>
 <body>
+<center>
+<table><tr><td>
 <p id="rubrik">Bilduppladdning</p>
 
-<form action="ladda.php" method="post"
-enctype="multipart/form-data">
-<label for="file">Bild: </label>
+<form action="ladda.php" method="post" enctype="multipart/form-data">
+<span id="urubrik">Välj en fil (jpg/jpeg, max 8 Mb): </span><br/><br/>
 <input type="file" name="file" id="file"><br><br>
 <input type="submit" name="submit" value="Ladda Upp">
 </form>
-
+</td></tr></table>
+</center>
 </body>
 </html>
