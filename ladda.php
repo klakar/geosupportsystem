@@ -127,19 +127,7 @@ if ((($_FILES["file"]["type"] == "image/jpeg")
 		} else {
 			$gpsvalid=0;
 		}
- 		//echo "<br />\n";
-		//echo "Bildfil: <a href='$newfile'>Visa bild</a><br />\n";
- 		//echo "Longitud: $lon<br />\n";
- 		//echo "Latitud: $lat<br />\n";
- 		//echo "Höjd: $alt<br />\n";
- 		//echo "Riktning: $dir<br /><br />\n";
- 		//echo "Kamera tillverkare: $emake<br />\n";
- 		//echo "Modell: $emodel<br />\n";
- 		//echo "Exponering: $eexposuretime s<br />\n";
- 		//echo "F-numer: $efnumber<br />\n";
- 		//echo "ISO: $eiso<br />\n";
- 		//echo "Tidpunkt: $edate<br />\n";
-		
+ 
 		// HTML kod för bilden
 		$popkod = "<span id='rubrik'>$uppladdad</span><br/>";
 		$popkod .= "<a href='$newfile'><img src='$newfile' height='100'></a><br/>";
