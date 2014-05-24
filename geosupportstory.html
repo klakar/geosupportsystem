@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Den lilla kartservern på Raspberry Pi</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+<div id="rubrik" style="background:#c5d30f;color:#FFFFFF;text-align:center;width:50%;height:40pt;font-family:Arial;font-size:32pt;font-weight:bolder;position:absolute;z-index:2;top:0;left:25%;opacity:0.8;border-radius:0 0 45px 45px;">Eksjö Stadsfest 29-30 Augusti 2014</div>
+<div id="story" style="background:#FFFFFF;width:30%;height:80%;font-family:Arial;font-size:14pt;position:absolute;z-index:1;top:10%;right:5%;opacity:0.7;border-radius:25px;padding:20px;"></div>
+<div id="map" style="width:100%; height:100%;position:absolute;z-index:0;top:0;left:0;"></div>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<script>
+var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+ attribution: 'Open Street Map'
+});
+var positioner = L.layerGroup([]);
+var map = L.map('map', {
+ center: [57.66827, 14.9808],
+ zoom: 16,
+ layers: [osm, positioner]
+});
+var baseMaps = {
+ "Open Street Map": osm
+};
+
+
+var overlayMaps = { "Markörer": positioner};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+L.control.scale({imperial:false, maxWidth:300}).addTo(map);
+
+
+var nummer = -1;
+var startText = "<h1>Eksjö Stadsfest 2014</h1><img style='width:100%' src='http://www.eksjostadsfest.se/Portals/2/StadsfestLogo_2014.png'><br><br>Mellan den 29-30 Augusti så arrangeras den årliga stadafesten i Eksjö<br>Här får du en kort presentation av arrangemanget geografiskt.<br><br>Materialet är lånat från stadsfestens hemsida som du kan nå på adressen nedan:<br><br><a href='http://www.eksjostadsfest.se'>http://eksjostadsfest.se</a><br><br>Du klickar i kartan för att gå vidare, och du kan panorera och zooma kartan när du vill.";
+var position = [[57.66695, 14.97063],[57.66943, 14.97057],[57.66884, 14.9694],[57.66893, 14.97101],[57.6679, 14.97132],[57.66818, 14.97132]];
+var storyText = [
+	"<h1>Stora Scenen - Stora Torg</h1>På torget finns den stora scenen, men även restauranger, pubbar, lotterier, spel och andra aktiviteter.<br><br>Under 2014 hoppas vi att bland annat Alcazar står på stora scenen under lördagkvällen.<br><br><img style='width:100%' src='http://www.eksjostadsfest.se/Portals/2///EasyDNNNews/496/520520p559EDNmainalcazar_main.jpg'><br><br><i>Bild från http://eksjostadsfest.se</i>",
+	"<H1>Museigården</H1>Under 2013 var detta hårdrocksscenen, där det var idel tung metall och distade gitarrer.<br><br>Programmet för 2014 är ännu inte klart, men under fredagen så spelar prelimenärt:<ul><li>Attentat</li><li>Blue Sky</li><li>Calaisa</li><li>D-A-D</li><li>Edda Magnason</li><li>​Emil Svanängen​</li><li>John Bull Gang</li><li>Lars Allertz</li><li>Markoolio</li><li>Ola Aurell</li><li>Preacher & Bear</li><li>Receding Hairline</li><li>The Fooo</li><li>The Neverdies</li><li>Troublemakers</li></ul><br><a href='http://www.eksjo.se/kultur_fritid/eksjoe_museum'>Besök Eksjö museums webbsida.</a>",
+	"<h1>Lilla Torg</h1>2013 så var det hit man gick när man ville hålla om varandra när man dansade.<br><br>Någon av nedanstående artister kanske uppträder här under lördagen. De är hur som helst prelimenärt inbokade på Stadsfesten då:<br><br><ul><li>Alacantra</li><li>Ammotrack</li><li>Blues Impact</li><li>Canders</li><li>Dani M</li><li> River Band</li><li> Wadeinus</li><li>Joybells</li><li>Linda P. Stor Salazar</li><li>​M-A-K​</li><li>​Oakland​</li><li>Reaktum Dexter</li><li>S. Bergens Balalaikor</li><li>Slowrider</li><li>Smash into Pieces</li><li> Lundell</li><li>Weeping Willows</li></ul><br><br>Läs senaste nytt om artister <a href='http://www.eksjostadsfest.se/Nyheter'>här</a>.",
+	"<h1>Green Street Park</h1>Dansmusik, Trance och Disco, skummbad och väldigt hög ljudvolym, men även mycket mångkulturellt.<br><br><img style='width:100%' src='http://www.eksjostadsfest.se/Portals/2/EasyGalleryImages/1/429/etnophonic%20eksj%C3%B6%20stadsfest.jpg'><br><br><i>Bild från http://eksjostadsfest.se</i>",
+	"<h1>Demobanken</h1>Vill man höra det som är lite udda eller sticker ut så är det denna scen man hänger vid.<br><br>FRÖSUNDA LSS är i år värdar och tillgänglighetsexperter för den nya läktaren för funktionshindrade. Där kan du som sitter i rullstol få hjälp av Frösundas egna värdar som finns på plats. Kaffe serveras och du kan få den information du behöver angående ex handikapptoalett inom området.<br><br><b>Information innan stadsfesten:</b> <br><i>Anders Tyrén, tel; 08-505 23 539",
+	"<h1>Vaxblekarscenen</h1>Detta är en av många platser där det flödar musik och finns aktiviteter under stadsfesten.<br><br><img style='width:100%;' src='https://dd16h7yl5aaam.cloudfront.net/bc/84ca3cccd94ecf151325765bf174436124eda3'><br>Är du nu intresserad av biljetter så kan du klicka på länken nedan, så ses vi i slutet på Augusti!<br><br><a href='http://www.eksjostadsfest.se/Biljetter'>BILJETTER</a>"
+];
+
+window.onload=function(){
+	document.getElementById('story').innerHTML = startText
+};
+
+map.on('click', function() {
+   try {
+	nummer += 1,
+	map.panTo(position[nummer], {
+		animate:true,
+		duration:1
+	}),
+	document.getElementById('story').innerHTML = storyText[nummer],
+	positioner.clearLayers(),
+	L.marker(position[nummer]).addTo(positioner);
+   }
+   catch(err) {
+	nummer = -1,
+	positioner.clearLayers(),
+	document.getElementById('story').innerHTML = startText
+   }
+});
+
+</script>
+</body>
+</html>
