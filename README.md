@@ -51,3 +51,10 @@ Kopiera sedan filerna ladda.htm och ladda.php till webbservern och anropa ladda.
 sudo chmod 777 upload<br>
 sudo wget https://github.com/klakar/geosupportsystem/raw/master/ladda.htm<br>
 sudo wget https://github.com/klakar/geosupportsystem/raw/master/ladda.php</i>
+
+<b>PostGIS databas</b>
+
+Installera på Ubuntu (klient eller server).
+
+<i>wget https://github.com/klakar/geosupportsystem/raw/master/postgis.sh<br>
+sh postgis.sh</i>
