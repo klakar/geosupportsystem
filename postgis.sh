@@ -41,6 +41,8 @@ sudo -u postgres psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.
 sudo -u postgres psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/topology_comments.sql
 clear
 echo "pgAdminIII (user/pass): postgres/*******"
+echo
+echo "Connect to database:"
 echo " - Host: $IPA"
 echo " - Database: geodata"
 echo " - Port: 5432"
