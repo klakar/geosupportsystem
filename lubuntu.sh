@@ -1,9 +1,9 @@
 #!/bin/bash
 cd /usr/share/lubuntu/wallpapers
 wget http://geosupportsystem.files.wordpress.com/2014/08/geosgx.jpg
-IN="bg=/usr/share/lubuntu/wallpapers/geosgx.jpg"
-UT="bg=/usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png"
-sed -i "s/$UT/$IN/g" /etc/lxdm/default.conf
+IN="background=/usr/share/lubuntu/wallpapers/geosgx.jpg"
+UT="background=/usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png"
+sed -i "s/$UT/$IN/g" /etc/lightdm/lightdm-gtk-greeter.conf
 clear
 add-apt-repository -y ppa:cairo-dock-team/ppa
 apt-get update
@@ -69,3 +69,6 @@ ln -s /usr/bin/osmupdate
 ln -s /usr/bin/osm2pgsql
 apt-get install -y xcompmgr
 echo "xcompmgr -n" >> /etc/xdg/lxsession/Lubuntu/autostart
+cd /lib/plymouth/themes/lubuntu-logo/
+rm lubuntu_logo.png
+wget https://geosupportsystem.files.wordpress.com/2014/08/lubuntu_logo.png
