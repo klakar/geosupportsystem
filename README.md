@@ -58,3 +58,11 @@ Installera på Ubuntu (klient eller server).
 
 <i>wget https://github.com/klakar/geosupportsystem/raw/master/postgis.sh<br>
 sh postgis.sh</i>
+
+<b>Modify Lubuntu</b>
+
+This script modifies a standard Lubuntu 14.04 distribution to a light GIS version.
+I use it to create custom distros with Ubuntu UCK.
+
+<i>wget https://github.com/klakar/geosupportsystem/raw/master/lubuntu.sh<br>
+sh lubuntu.sh</i>
