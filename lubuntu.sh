@@ -30,3 +30,4 @@ apt-get install pgadmin3
 mkdir /etc/skel/Desktop
 cd /etc/skel/Desktop/
 ln -s /usr/share/application/qgis.desktop
+apt-get install osmctools gpsbabel mtkbabel arandr gpsmap gpstrans mkgmap mkgmapgui make gcc
