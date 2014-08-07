@@ -1,4 +1,7 @@
 #!/bin/bash
+cd /usr/share/lubuntu/wallpapers
+wget http://geosupportsystem.files.wordpress.com/2014/08/geosgx.jpg
+nano /etc/lxdm/default.conf
 clear
 add-apt-repository ppa:cairo-dock-team/ppa
 apt-get update
