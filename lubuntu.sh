@@ -1,8 +1,8 @@
 #!/bin/bash
 cd /usr/share/lubuntu/wallpapers
 wget http://geosupportsystem.files.wordpress.com/2014/08/geosgx.jpg
-IN="background=/usr/share/lubuntu/wallpapers/geosgx.jpg"
-UT="background=/usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png"
+IN="geosgx.jpg"
+UT="lubuntu-default-wallpaper.png"
 sed -i "s/$UT/$IN/g" /etc/lightdm/lightdm-gtk-greeter.conf
 clear
 add-apt-repository -y ppa:cairo-dock-team/ppa
