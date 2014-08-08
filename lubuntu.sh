@@ -21,7 +21,7 @@ sed -i "s/$UT/$IN/g" /usr/share/lxpanel/profile/Lubuntu/panels/panel
 IN="    alpha=130\n    autohide=1"
 UT="    alpha=0"
 sed -i "s/$UT/$IN/g" /usr/share/lxpanel/profile/Lubuntu/panels/panel
-add-apt-repository "deb http://qgis.org/debian-nightly trusty main"
+add-apt-repository "deb http://qgis.org/debian trusty main"
 gpg --keyserver keyserver.ubuntu.com --recv 47765B75
 gpg --export --armor 47765B75 | apt-key add -
 apt-get update
