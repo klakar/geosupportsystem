@@ -31,6 +31,8 @@ wget http://qgis.boundlessgeo.com/opengeo/version/0.5/download/
 unzip index.html
 wget https://github.com/alexbruy/photo2shape/archive/master.zip
 unzip master.zip
+mv opengeo/ /usr/share/qgis/python/plugins/opengeo/
+mv photo2shape-master/ /usr/share/qgis/python/plugins/photo2shape/
 apt-get install -y postgresql-9.3-postgis-2.1
 passwd postgres
 echo "Type: \password postgres"
