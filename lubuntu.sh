@@ -26,6 +26,9 @@ gpg --keyserver keyserver.ubuntu.com --recv 47765B75
 gpg --export --armor 47765B75 | apt-key add -
 apt-get update
 apt-get install -y qgis python-qgis qgis-plugin-grass
+cd ~
+wget http://qgis.boundlessgeo.com/opengeo/version/0.5/download/
+unzip index.html
 apt-get install -y postgresql-9.3-postgis-2.1
 passwd postgres
 echo "Type: \password postgres"
