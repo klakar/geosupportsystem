@@ -53,7 +53,7 @@ apt-get install -y osmctools gpsbabel mtkbabel arandr gpstrans mkgmap mkgmapgui 
 cd ~
 wget http://cgpsmapper.com/download/sendmap20.gz
 gunzip sendmap20.gz
-mv sendmap20.gz /usr/bin/
+mv sendmap20 /usr/bin/
 chmod 777 /usr/bin/sendmap20
 wget http://www.mkgmap.org.uk/download/splitter-r412.zip
 unzip splitter-r412.zip
