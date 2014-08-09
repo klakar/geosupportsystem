@@ -31,10 +31,6 @@ wget http://qgis.boundlessgeo.com/opengeo/version/0.5/download/
 unzip index.html
 mv opengeo/ /usr/share/qgis/python/plugins/opengeo/
 apt-get install -y postgresql-9.3-postgis-2.1
-passwd postgres
-echo "Type: \password postgres"
-echo "Change password and exit with: \q"
-
 apt-get install -y pgadmin3
 mkdir /etc/skel/Desktop
 cd /etc/skel/Desktop/
