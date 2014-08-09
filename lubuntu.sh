@@ -34,15 +34,7 @@ apt-get install -y postgresql-9.3-postgis-2.1
 passwd postgres
 echo "Type: \password postgres"
 echo "Change password and exit with: \q"
-/bin/su -c psql - postgres
-/bin/su -c createdb geodata - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/postgis.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/spatial_ref_sys.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/postgis_comments.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/rtpostgis.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/raster_comments.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/topology.sql - postgres
-/bin/su -c psql -d geodata -f /usr/share/postgresql/9.3/contrib/postgis-2.1/topology_comments.sql - postgres
+
 apt-get install -y pgadmin3
 mkdir /etc/skel/Desktop
 cd /etc/skel/Desktop/
