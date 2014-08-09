@@ -34,6 +34,7 @@ apt-get install -y postgresql-9.3-postgis-2.1
 apt-get install -y pgadmin3
 mkdir /etc/skel/Desktop
 cd /etc/skel/Desktop/
+wget https://github.com/klakar/geosupportsystem/raw/master/postgis_conf.sh
 ln -s /usr/share/applications/qgis.desktop
 ln -s /usr/share/applications/pgadmin3.desktop
 apt-get install -y osmctools gpsbabel mtkbabel arandr gpstrans mkgmap mkgmapgui make gcc osm2pgsql
