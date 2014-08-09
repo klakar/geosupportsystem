@@ -35,6 +35,7 @@ apt-get install -y pgadmin3
 mkdir /etc/skel/Desktop
 cd /etc/skel/Desktop/
 wget https://github.com/klakar/geosupportsystem/raw/master/postgis_conf.sh
+wget http://firmware.diydrones.com/Tools/APMPlanner/apm_planner2_latest_ubuntu_trusty64.deb
 ln -s /usr/share/applications/qgis.desktop
 ln -s /usr/share/applications/pgadmin3.desktop
 apt-get install -y osmctools gpsbabel mtkbabel arandr gpstrans mkgmap mkgmapgui make gcc osm2pgsql
