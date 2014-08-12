@@ -63,6 +63,9 @@ ln -s /usr/bin/osmconvert
 ln -s /usr/bin/osmfilter
 ln -s /usr/bin/osmupdate
 ln -s /usr/bin/osm2pgsql
+wget http://geosupportsystem.files.wordpress.com/2014/06/qgispasvenska24_ed1.pdf
+wget https://geosupportsystem.files.wordpress.com/2011/06/qgis2_4_tangentbordsgenvagar.pdf
+wget http://geosupportsystem.files.wordpress.com/2014/01/egen-server-fc3b6r-geodatatjc3a4nster.pdf
 apt-get install -y xcompmgr
 echo "xcompmgr -n" >> /etc/xdg/lxsession/Lubuntu/autostart
 cd /lib/plymouth/themes/lubuntu-logo/
