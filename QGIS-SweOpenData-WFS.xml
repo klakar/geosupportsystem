@@ -1,0 +1,18 @@
+<!DOCTYPE connections>
+<qgsWFSConnections version="1.0">
+    <wfs password="" referer="" username="" url="http://ext-geoservices.lansstyrelsen.se/arcgis/services/inspire/SE_PF_WFS/mapserver/wmsserver" name="Länsstyrelserna"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_is/wms?" name="SMHI Is"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_moln/wms?" name="SMHI Moln"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_nederbord/wms?" name="SMHI Nederbörd"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/oc-obs/ows?" name="SMHI Oceanografi"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_sno/wms?" name="SMHI Snö"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_solskenstid/wms?" name="SMHI Sol"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_spridningsklimat/wms?" name="SMHI Spridningsklimat"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_temperatur/wms?" name="SMHI Temperatur"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/SMHI_vatten/wms?" name="SMHI Vatten"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_vegatation/wms?" name="SMHI Vegetation"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_vind/wms?" name="SMHI Vind"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_angtryck/wms?" name="SMHI Ånga"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_arstidstart/wms?" name="SMHI Årstider"/>
+    <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_aska/wms?" name="SMHI Åska"/>
+</qgsWFSConnections>
