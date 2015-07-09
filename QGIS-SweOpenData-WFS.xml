@@ -1,6 +1,7 @@
 <!DOCTYPE connections>
 <qgsWFSConnections version="1.0">
-    <wfs password="" referer="" username="" url="http://ext-geoservices.lansstyrelsen.se/arcgis/services/inspire/SE_PF_WFS/mapserver/wmsserver" name="Länsstyrelserna"/>
+    <wfs password="" referer="" username="" url="http://geodata.havochvatten.se/geoservices/hav-fiskforekomster/ows" name="Havs och Vattenmyndigheten Fiskeförekomst"/>
+    <wfs password="" referer="" username="" url="http://geodata.havochvatten.se/geoservices/hav-biogeografiskaregioner/ows?" name="Havs och Vattenmyndigheten Limniska Ekoregioner"/>
     <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_is/wms?" name="SMHI Is"/>
     <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_moln/wms?" name="SMHI Moln"/>
     <wfs password="" referer="" username="" url="http://opendata-view.smhi.se/klim-stat_nederbord/wms?" name="SMHI Nederbörd"/>
