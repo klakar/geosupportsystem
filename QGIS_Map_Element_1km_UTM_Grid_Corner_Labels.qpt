@@ -1,4 +1,4 @@
-<Composer title="UTM 1km Geosupportsystem" visible="1">
+<Composer title="1km UTM Grid Geosupportsystem" visible="1">
  <Composition gridVisible="0" printResolution="300" paperWidth="297" snapGridOffsetX="0" guidesVisible="1" snapGridResolution="10" snapGridOffsetY="0" alignmentSnap="1" snapping="0" snapTolerancePixels="5" numPages="1" paperHeight="210" smartGuides="1" printAsRaster="0" generateWorldFile="0">
   <symbol alpha="1" clip_to_extent="1" type="fill" name="">
    <layer pass="0" class="SimpleFill" locked="0">
@@ -78,10 +78,10 @@
    </layer>
   </symbol>
   <ComposerMap mapRotation="0" keepLayerSet="false" id="0" previewMode="Cache" drawCanvasItems="true">
-   <Extent ymin="6388442.89294254966080189" xmin="509212.92841255915118381" ymax="6394295.01125283166766167" xmax="517562.92842107609612867"/>
+   <Extent ymin="6388808.47286637779325247" xmin="489465.69027635257225484" ymax="6394660.59117665980011225" xmax="497815.6902848695171997"/>
    <LayerSet/>
    <Grid/>
-   <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="1" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="1" topFrameDivisions="0" uuid="{e47ffdbc-fde4-4ed2-91e9-077b0bece32c}" leftAnnotationDirection="1" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="10000" gridFrameSideFlags="15" intervalY="10000" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="right(left(@grid_number,5),2) &#xa;" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.29999999999999999" bottomAnnotationDisplay="3" unit="0" topAnnotationDisplay="3" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Every_Y-axis_10km" annotationFormat="8" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
+   <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="1" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="1" topFrameDivisions="0" uuid="{e47ffdbc-fde4-4ed2-91e9-077b0bece32c}" leftAnnotationDirection="1" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="10000" gridFrameSideFlags="15" intervalY="10000" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="left(right(@grid_number,5),2) &#xa;" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.29999999999999999" bottomAnnotationDisplay="3" unit="0" topAnnotationDisplay="3" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Every_Y-axis_10km" annotationFormat="8" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
     <lineStyle>
      <symbol alpha="1" clip_to_extent="1" type="line" name="">
       <layer pass="0" class="SimpleLine" locked="0">
@@ -766,7 +766,7 @@
     <annotationFontProperties description="Droid Sans,6,-1,5,50,0,0,0,0,0" style="Regular"/>
    </ComposerMapGrid>
    <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
-   <ComposerItem pagey="46.2585" page="1" id="" lastValidViewScaleFactor="9.76634" positionMode="0" positionLock="false" x="64.6857" y="46.2585" visibility="1" zValue="1" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="167.629" outlineWidth="0.5" excludeFromExports="0" uuid="{51eee367-32ae-4e22-9baf-24a12b021cc7}" height="117.483" itemRotation="0" frame="true" pagex="64.6857">
+   <ComposerItem pagey="46.2585" page="1" id="" lastValidViewScaleFactor="3.37768" positionMode="0" positionLock="false" x="64.6857" y="46.2585" visibility="1" zValue="1" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="167.629" outlineWidth="0.5" excludeFromExports="0" uuid="{51eee367-32ae-4e22-9baf-24a12b021cc7}" height="117.483" itemRotation="0" frame="true" pagex="64.6857">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
     <dataDefinedMapScale expr="50000" field="" active="true" useExpr="true"/>
