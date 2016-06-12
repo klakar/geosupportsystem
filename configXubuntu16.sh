@@ -9,7 +9,10 @@ sudo dpkg -i faenza-icon-theme_1.3.1_all.deb
 sudo apt-get install libdvd-pkg
 sudo dpkg-reconfigure libdvd-pkg
 sudo apt-get dist-upgrade
-sudo apt-get -y install leafpad vlc kodi darktable steam wine playonlinux gimp inkscape docky gufw python-gi
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:team-xbmc/ppa
+echo deb http://ppa.launchpad.net/kdenlive/kdenlive-stable/ubuntu xenial main | sudo tee /etc/apt/sources.list.d/kdenlive.list
+sudo apt-get -y install leafpad vlc browser-plugin-vlc kodi kdenlive darktable steam wine playonlinux gimp inkscape docky gufw python-gi
 wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
 sudo dpkg -i skype-ubuntu-precise_4.3.0.37-1_i386.deb
 sudo apt-get install -f
