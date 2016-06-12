@@ -21,18 +21,18 @@ sudo apt-get update && sudo apt-get install spotify-client
 echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
 sudo apt-get update && sudo apt-get -y install qgis python-qgis qgis-plugin-grass
-wget https://raw.githubusercontent.com/klakar/geosupportsystem/master/KlasKarlssonIMG_1209Ledsen_2.jpg
-sudo mv KlasKarlssonIMG_1209Ledsen_2.jpg /usr/share/xfce4/KlasKarlssonIMG_1209Ledsen_2.jpg
 clear
-echo 1. Check for DRIVERS
-echo 2. Activate the FIREWALL
-echo 3. Change the Whisker MENU
+echo 1. Change the WHISKER MENU Properties
+echo 2. Check for ADDITIONAL DRIVERS
+echo 3. Activate the FIREWALL
 echo 4. Add "super" KEYBOARD shortcut
-echo 5. Change Theme APPEARANCE
-echo 6. Change Icons APPEARANCE
-echo 7. Change the wallpaper and DESKTOP icons
-echo 8. WINDOW MANAGER TWEAKS
-echo 9. Set up DOCKY
+echo 5. Change Theme in APPEARANCE
+echo 6. Change Icons in APPEARANCE
+echo 7. Change the DESKTOP wallpaper and icons
+echo 8. WINDOW MANAGER TWEAKS compositor
+echo 9. Start DOCKY and add launchers
 echo 10. Tweak LIGHTDM greeter
 echo
-echo Reboot
+echo Reboot - Log In - Reboot
+echo
+echo Add more SOFTWARE...
