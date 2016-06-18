@@ -13,11 +13,14 @@ sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:team-xbmc/ppa
 sudo add-apt-repository ppa:hugin/hugin-builds
 sudo add-apt-repository ppa:mixxx/mixxx
+sudo add-apt-repository ppa:moka/daily
+sudo add-apt-repository ppa:numix/ppa
+sudo add-apt-repository ppa:alecive/antigone
 echo deb http://ppa.launchpad.net/kdenlive/kdenlive-stable/ubuntu xenial main | sudo tee /etc/apt/sources.list.d/kdenlive.list
 sudo apt-get update
 sudo apt-get -y install leafpad vlc browser-plugin-vlc kodi kdenlive darktable steam wine playonlinux gimp inkscape docky gufw python-gi
 sudo apt-get -y install meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel lauchy blender hugin enblend panini handbrake
-sudo apt-get -y install audacity synfigstudio virtualbox mixxx
+sudo apt-get -y install audacity synfigstudio virtualbox mixxx moka-icon-theme numix-icon-theme numix-icon-theme-circle awoken-icon-theme
 wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
 sudo dpkg -i skype-ubuntu-precise_4.3.0.37-1_i386.deb
 sudo apt-get -y install -f
