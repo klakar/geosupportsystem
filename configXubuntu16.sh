@@ -39,7 +39,7 @@ echo 7. Change the DESKTOP wallpaper and icons
 echo 8. WINDOW MANAGER style and TWEAKS compositor
 echo 9. Start DOCKY and add launchers
 echo 10. Tweak LIGHTDM greeter
-echo 11. Add Launchy to AUTOSTART
+echo 11. Add TLP and Launchy to AUTOSTART
 echo
 echo Reboot - Log In - Reboot
 echo
