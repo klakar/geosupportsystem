@@ -52,6 +52,6 @@ echo 9. Start DOCKY and add launchers
 echo 10. Tweak LIGHTDM greeter
 echo 11. Add TLP and Launchy to AUTOSTART
 echo
-echo Reboot - Log In - Reboot
+echo Reboot - Log In - Add more SOFTWARE
 echo
-echo Add more SOFTWARE...
+echo VirtualBox under Windows 10 is... Problematic...
