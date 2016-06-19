@@ -22,6 +22,8 @@ sudo apt-get -y install leafpad vlc browser-plugin-vlc kodi kdenlive darktable s
 sudo apt-get -y install meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel lauchy blender hugin enblend panini handbrake indicator-cpufreq
 sudo apt-get -y install audacity synfigstudio virtualbox mixxx moka-icon-theme numix-icon-theme numix-icon-theme-circle awoken-icon-theme
 wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
+wget https://raw.githubusercontent.com/klakar/geosupportsystem/master/Systems-Linux-icon.png
+sudo mv Systems-Linux-icon.png /usr/share/icons/default/Systems-Linux-icon.png
 sudo dpkg -i skype-ubuntu-precise_4.3.0.37-1_i386.deb
 sudo apt-get -y install -f
 wget https://linux.dropbox.com/packages/ubuntu/dropbox_2015.10.28_amd64.deb
