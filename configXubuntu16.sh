@@ -18,9 +18,9 @@ sudo add-apt-repository ppa:numix/ppa
 sudo add-apt-repository ppa:alecive/antigone
 echo deb http://ppa.launchpad.net/kdenlive/kdenlive-stable/ubuntu xenial main | sudo tee /etc/apt/sources.list.d/kdenlive.list
 sudo apt-get update
-sudo apt-get -y install leafpad vlc browser-plugin-vlc kodi kdenlive darktable steam wine playonlinux gimp inkscape docky gufw python-gi
-sudo apt-get -y install meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel lauchy blender hugin enblend panini handbrake indicator-cpufreq
-sudo apt-get -y install audacity synfigstudio virtualbox mixxx moka-icon-theme numix-icon-theme numix-icon-theme-circle awoken-icon-theme
+sudo apt-get install leafpad vlc browser-plugin-vlc kodi kdenlive darktable steam wine playonlinux gimp inkscape docky gufw python-gi
+sudo apt-get install meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel lauchy blender hugin enblend panini handbrake indicator-cpufreq
+sudo apt-get install audacity synfigstudio virtualbox mixxx moka-icon-theme numix-icon-theme numix-icon-theme-circle awoken-icon-theme
 wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
 wget https://raw.githubusercontent.com/klakar/geosupportsystem/master/Systems-Linux-icon.png
 sudo mv Systems-Linux-icon.png /usr/share/icons/default/Systems-Linux-icon.png
