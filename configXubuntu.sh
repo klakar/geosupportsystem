@@ -39,14 +39,13 @@ echo Adding extra repositorys
 sudo add-apt-repository -y -u ppa:team-xbmc/ppa
 sudo add-apt-repository -y -u ppa:hugin/hugin-builds
 sudo add-apt-repository -y -u ppa:mixxx/mixxx
-echo deb http://ppa.launchpad.net/kdenlive/kdenlive-stable/ubuntu xenial main | sudo tee /etc/apt/sources.list.d/kdenlive.list
-sudo apt-get update
+sudo add-apt-repository -y -u ppa:kdenlive/kdenlive-stable
 clear
 echo Installing videoplayers, audio software and editors...
 sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive audacity mixxx
 clear
 echo Installing photo and graphics software...
-sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend panini handbrake synfigstudio
+sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend handbrake synfigstudio
 clear
 echo Do you want Games Y/n?
 read game
