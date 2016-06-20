@@ -1,17 +1,17 @@
 clear
 echo Upgrading system...
 sudo apt-get update -qq && sudo apt-get upgrade -y -qq
-
+clear
 echo Installing restricted extras and codecs...
 sudo apt-get install -y -qq xubuntu-restricted-extras libavcodec-extra
-
+clear
 echo Installing and starting powermanagement...
 sudo apt-get install -y tlp tlp-rdw
 sudo tlp start
-
-echo Do you want extra Icons and Themes (Y/n)?
+clear
+echo Do you want extra Icons and Themes Y/n?
 read icth
-if [ icth <> "n" ]; then
+if [ "$icth" <> "n" ]; then
   wget http://downloadcontent.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.10/all/arc-theme-solid_1465131682.3095952_all.deb
   sudo dpkg -i arc-theme-solid_1465131682.3095952_all.deb
   wget http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/faenza-icon-theme/faenza-icon-theme_1.3.1_all.deb
@@ -23,77 +23,77 @@ if [ icth <> "n" ]; then
   wget https://raw.githubusercontent.com/klakar/geosupportsystem/master/Systems-Linux-icon.png
   sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 fi
-
-echo Do you want DVD support (Y/n)?
+clear
+echo Do you want DVD support Y/n?
 read dvsu
-if [ dvsu <> "n" ]; then
+if [ "$dvsu" <> "n" ]; then
   sudo apt-get install -y -qq libdvd-pkg
   sudo dpkg-reconfigure libdvd-pkg
 fi
-
+clear
 echo Fix any broken packages
-sudo apt-get dist-upgrade
-sudo apt-get install -f
-
+sudo apt-get -y dist-upgrade
+sudo apt-get install -f -y
+clear
 echo Adding extra repositorys
 sudo add-apt-repository -y -u ppa:team-xbmc/ppa
 sudo add-apt-repository -y -u ppa:hugin/hugin-builds
 sudo add-apt-repository -y -u ppa:mixxx/mixxx
 echo deb http://ppa.launchpad.net/kdenlive/kdenlive-stable/ubuntu xenial main | sudo tee /etc/apt/sources.list.d/kdenlive.list
 sudo apt-get update
-
+clear
 echo Installing videoplayers, audio software and editors...
 sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive audacity mixxx
-
+clear
 echo Installing photo and graphics software...
 sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend panini handbrake synfigstudio
-
-echo Do you want Games (Y/n)?
+clear
+echo Do you want Games Y/n?
 read game
-if [ game <> "n" ]; then
+if [ "$game" <> "n" ]; then
   sudo apt-get install -y -qq steam wine playonlinux
 fi
-
+clear
 echo Installing Docky...
 sudo apt-get install -y -qq docky
 echo Installing Firewall...
 sudo apt-get install -y -qq gufw python-gi
-
-echo Do you want Science software (CAD/GIS/etc) (Y/n)?
+clear
+echo Do you want Science software CAD/GIS/etc Y/n?
 read scis
-if [ scis <> "n" ]; then
+if [ "$scis" <> "n" ]; then
   sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel
   echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
 fi
-
+clear
 sudo apt-get install -y lauchy indicator-cpufreq
 sudo apt-get update
 sudo apt-get install -y virtualbox 
-
-echo Do you want Skype (Y/n)?
+clear
+echo Do you want Skype Y/n?
 read skyp
-if [ skyp <> "n" ]; then
+if [ "$skyp" <> "n" ]; then
   wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
   sudo dpkg -i skype-ubuntu-precise_4.3.0.37-1_i386.deb
 fi
-
-echo Do you want DropBox (Y/n)?
+clear
+echo Do you want DropBox Y/n?
 read drop
-if [ drop <> "n" ]; then
+if [ "$drop" <> "n" ]; then
   wget https://linux.dropbox.com/packages/ubuntu/dropbox_2015.10.28_amd64.deb
   sudo dpkg -i dropbox_2015.10.28_amd64.deb
 fi
-
-echo Do you want Spotify (Y/n)?
+clear
+echo Do you want Spotify Y/n?
 read spot
-if [ spot <> "n" ]; then
+if [ "$spot" <> "n" ]; then
   keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
   echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
   sudo apt-get install -y -qq spotify-client
 fi
-
+clear
 echo Fixing broken packages...
 sudo apt-get -y -qq install -f
 
