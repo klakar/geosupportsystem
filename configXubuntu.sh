@@ -18,8 +18,7 @@ if [ "$icth" != "n" ]; then
   sudo dpkg -i faenza-icon-theme_1.3.1_all.deb
   sudo add-apt-repository -y -u ppa:moka/daily
   sudo add-apt-repository -y -u ppa:numix/ppa
-  sudo add-apt-repository -y -u ppa:alecive/antigone
-  sudo apt-get install -y -qq moka-icon-theme numix-icon-theme numix-icon-theme-circle awoken-icon-theme
+  sudo apt-get install -y -qq moka-icon-theme numix-icon-theme numix-icon-theme-circle
   wget https://raw.githubusercontent.com/klakar/geosupportsystem/master/Systems-Linux-icon.png
   sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 fi
