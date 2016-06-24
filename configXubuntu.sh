@@ -66,7 +66,7 @@ if [ "$scis" != "n" ]; then
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
 fi
 clear
-sudo apt-get install -y lauchy indicator-cpufreq
+sudo apt-get install -y launchy indicator-cpufreq
 sudo apt-get update
 sudo apt-get install -y virtualbox 
 clear
