@@ -66,3 +66,11 @@ I use it to create custom distros with Ubuntu UCK.
 
 <i>wget https://github.com/klakar/geosupportsystem/raw/master/lubuntu.sh<br>
 sh lubuntu.sh</i>
+
+<b>Modify Xubuntu</b>
+
+This script modifies a standard Xubuntu 16.04 with usefull software and tools.
+
+<i>wget https://github.com/klakar/geosupportsystem/raw/master/configXubuntu16.sh</br>
+chmod +x configXubuntu.sh<br>
+sh configXubuntu16.sh</i>
