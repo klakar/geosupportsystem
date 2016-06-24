@@ -66,9 +66,8 @@ if [ "$scis" != "n" ]; then
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
 fi
 clear
-sudo apt-get install -y launchy indicator-cpufreq
-sudo apt-get update
-sudo apt-get install -y virtualbox 
+echo Installing some system software and utilities
+sudo apt-get install -y launchy indicator-cpufreq gnome-disks usb-creator-gtk baobab psensor virtualbox
 clear
 echo Do you want Skype Y/n?
 read skyp
@@ -96,12 +95,13 @@ echo Fixing broken packages...
 sudo apt-get -y -qq install -f
 
 clear
+echo Checklist for Optional Tweaks
 echo 1. Change the WHISKER MENU Properties
 echo 2. Check for ADDITIONAL DRIVERS
 echo 3. Activate the FIREWALL
 echo 4. Add "super" KEYBOARD shortcut
 echo 5. Change Theme in APPEARANCE
-echo 6. Change Icons in APPEARANCE
+echo 6. Change Icons Theme in APPEARANCE
 echo 7. Change the DESKTOP wallpaper and icons
 echo 8. WINDOW MANAGER style and TWEAKS compositor
 echo 9. Start DOCKY and add launchers
