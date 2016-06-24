@@ -63,7 +63,9 @@ if [ "$scis" != "n" ]; then
   sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel
   echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
+  sudo add-apt-repository -y -u ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
+  sudo apt-get install -y -qq saga python-saga libotb otb-bin python-otb
 fi
 clear
 echo Installing some system software and utilities
