@@ -61,7 +61,13 @@ echo Do you want Science software CAD/GIS/etc Y/n?
 read scis
 if [ "$scis" != "n" ]; then
   sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel
-  echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
+  echo Do you want stable or nightly S/n?
+  read stni
+  if [ "$stni" != "n" ]; then
+    echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
+  else
+    echo deb http://qgis.org/debian-nightly xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
+  fi
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
   sudo add-apt-repository -y -u ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
