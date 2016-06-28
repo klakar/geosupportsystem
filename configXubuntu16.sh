@@ -116,5 +116,6 @@ echo 8. WINDOW MANAGER style and TWEAKS compositor
 echo 9. Start DOCKY and add launchers
 echo 10. Tweak LIGHTDM greeter
 echo 11. Add TLP and Launchy to AUTOSTART
+echo 12. Get Simplenote - Really! Do!
 echo
 echo Reboot - Log In - Add more SOFTWARE
