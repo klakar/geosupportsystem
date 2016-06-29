@@ -104,6 +104,10 @@ echo Fixing broken packages...
 sudo apt-get -y -qq install -f
 
 clear
+echo Do you want Antivirus? Try Sophos...
+firefox https://secure2.sophos.com/en-us/products/free-tools/sophos-antivirus-for-linux/download.aspx &
+
+clear
 echo Checklist for Optional Tweaks
 echo 1. Change the WHISKER MENU Properties
 echo 2. Check for ADDITIONAL DRIVERS
