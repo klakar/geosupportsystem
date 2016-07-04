@@ -5,9 +5,25 @@ clear
 echo Installing restricted extras and codecs...
 sudo apt-get install -y -qq xubuntu-restricted-extras libavcodec-extra
 clear
-echo Installing and starting powermanagement...
-sudo apt-get install -y tlp tlp-rdw
-sudo tlp start
+echo "Do you want Laptop Tools and Tweaks for better power management?"
+read poma
+if [ "$poma" != "n" ]; then
+  sudo apt-get install -y -qq powertop laptop-mode-tools
+  sudo update-rc.d laptop-mode defaults
+  echo "Tuning your laptop... (can take some time)"
+  sudo powertop --auto-tune --html
+  firefox powertop.html &
+  clear
+  echo "TODO:" 
+  echo "sudo su" 
+  echo "echo 0 > /proc/sys/vm/swappiness"
+  echo "exit"
+  echo 
+  echo "Edit your /etc/fstab (sudo nano /etc/fstab)" 
+  echo "Add: tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=1024M 0 0"
+  echo "Press any key to continue..."
+  read anykey
+fi
 clear
 echo Do you want extra Icons and Themes Y/n?
 read icth
