@@ -10,6 +10,7 @@ read poma
 if [ "$poma" != "n" ]; then
   sudo apt-get install -y -qq powertop laptop-mode-tools
   sudo update-rc.d laptop-mode defaults
+  sudo apt-get remove -y light-locker && sudo apt-get install -y xscreensaver
   echo "Tuning your laptop... (can take some time)"
   sudo powertop --auto-tune --html
   firefox powertop.html &
