@@ -59,7 +59,7 @@ sudo add-apt-repository -y -u ppa:kdenlive/kdenlive-stable
 sudo add-apt-repository -y -u ppa:obsproject/obs-studio
 clear
 echo Installing videoplayers, audio software and editors...
-sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive audacity mixxx obs-studio lmms
+sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive kde-runtime audacity mixxx obs-studio lmms
 clear
 echo Installing photo and graphics software...
 sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend handbrake synfigstudio
