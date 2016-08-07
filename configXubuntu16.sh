@@ -90,7 +90,7 @@ if [ "$scis" != "n" ]; then
   sudo add-apt-repository -y -u ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
   sudo apt-get install -y -qq saga python-saga libotb otb-bin python-otb python-exif python-scipy libwxgtk3.0-dev libgdal-dev
-  sudo apt-get install -y -qq pyqt4-dev-tools python-sphinx bluefish git
+  sudo apt-get install -y -qq pyqt4-dev-tools python-sphinx bluefish git python-pip
 fi
 clear
 echo Installing some system software and utilities
