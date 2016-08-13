@@ -50,16 +50,22 @@ tab_file.write("id\tlongitude\tlongRef\tlatitude\tlatRef\timgDir\tgpsTime\tcamer
 
 # Göra om dms lista till D.ddd
 def dms2ddd(dms):
-	deg = float(dms.values[0].num) / float(dms.values[0].den)
-	min = float(dms.values[1].num) / float(dms.values[1].den)
-	sec = float(dms.values[2].num) / float(dms.values[2].den)
+	deg = float(dms.values[0].num)
+	min = float(dms.values[1].num)
+	try:
+		sec = float(dms.values[2].num) / float(dms.values[2].den)
+	except:
+		sec = float(dms.values[2].num)
 	return(deg + min/60.0 + sec/3600.0)
 
 # Göra om GPS tid till text
 def time2string(time):
 	h = str(time.values[0].num)
 	m = str(time.values[1].num)
-	s = str(int(time.values[2].num/time.values[2].den))
+	try:
+		s = str(int(time.values[2].num/time.values[2].den))
+	except:
+		s = str(time.values[2].num)
 	hh = "0" + h
 	mm = "0" + m
 	ss = "0" + s
