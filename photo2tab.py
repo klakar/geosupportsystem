@@ -19,18 +19,21 @@ import time
 # Visa hjälp om photo2tab.py --help
 try:
 	if sys.argv[1] == "--help":
-		print("\nHjälp för photo2tab\n===================\n\n\
-Skriptet tar ett argument!\nNämligen sökvägen att leta efter foton i.\n\
-På sökvägen skapas en fil med namnet photo2.tab med resultatet av sökningen.\n\n\
-Filen är en tab-separerad textfil med bl.a. position, eventuell riktning \noch sökväg till \
-bilden. \n\nOm du inte anger sökväg så blir du tillfrågad om vilken sökväg som \
-skall \nanvändas. Om du inte har skrivrättigheter i den katalogen så blir du \ntillfrågad \
-om var du vill att filen skall sparas.\n\n\
-Skriptet är gjort av Klas Karlsson 2016-08-13\n\
-Beroende av: ExifRead.\n\n\n")
+		print("\nHjälp för photo2tab\n===================\n\npython photo2tab.py [sökväg till bilder] [alternativt filnamn]\n\n")
+		print("Skriptet tar två valfria argument!\ndet första är sökvägen att leta efter foton i.\nPå sökvägen skapas en fil med namnet photo2.tab med resultatet av sökningen.\n\n")
+		print("Filen är en tab-separerad textfil med bl.a. position, eventuell riktning \noch sökväg till bilden. \n\nOm du inte anger sökväg så blir du tillfrågad om vilken sökväg som ")
+		print("skall \nanvändas. Om du inte har skrivrättigheter i den katalogen så blir du \ntillfrågad om var du vill att filen skall sparas.\n\n")
+		print("Du kan om du vill ange ett alternativt filnamn att spara data till\ngenom att ange detta i ytterligare ett argument.\n")
+		print("Filen sparas på samma sökväg som tidigare.\n\nSkriptet är gjort av Klas Karlsson 2016-08-13\nBeroende av: ExifRead.\n\n\n")
 		sys.exit()
-except:
+except Exception:
 	pass
+	
+# Kolla om det angivits ett filnamn för att spara
+try:
+	save_file = sys.argv[2]
+except:
+	save_file = "photo2.tab"
 	
 # Finns det en sökväg i argumentet?
 try:
@@ -42,10 +45,10 @@ print( "\nSöker igenom: %s ..." % folder_path )
 # Skapa tab-fil att skriva data till
 try:
 	save_path = folder_path
-	tab_file = open(os.path.join(save_path, "photo2.tab"), "w")
+	tab_file = open(os.path.join(save_path, save_file), "w")
 except:
 	save_path = raw_input("Var skall resultatet sparas? ")
-	tab_file = open(os.path.join(save_path, "photo2.tab"), "w")
+	tab_file = open(os.path.join(save_path, save_file), "w")
 tab_file.write("id\tlongitude\tlongRef\tlatitude\tlatRef\timgDir\tgpsTime\tcameraTime\tcamera\timgPath\n")
 
 # Göra om dms lista till D.ddd
@@ -110,9 +113,9 @@ for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och u
 						ImageModel = tags[tag]
 			f.close() # Stäng bildfilen
 			if str(GPSLongitude) != "": # Om det är en bild med GPS info så...
-				if GPSLatitudeRef != "N":
+				if GPSLatitudeRef == "S":
 					GPSLatitude = 0 - GPSLatitude
-				if GPSLongitudeRef != "E":
+				if GPSLongitudeRef == "W":
 					GPSLongitude = 0 - GPSLongitude
 				tab_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (str(countTagged), \
 				str(GPSLongitude), str(GPSLongitudeRef), \
@@ -146,4 +149,4 @@ else:
 	hour = int(time_process/3600.0)
 	min = int(time_process - hour*3600)
 	print("\nProcessen tog %s timmar och %s minuter" % (hour, min))
-print("Filen \"photo2.tab\" skapad på sökvägen: %s" % save_path)
+print("Filen \"%s\" skapad på sökvägen: %s" % (save_file, save_path))
