@@ -118,7 +118,6 @@ for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och u
 				str(GPSLongitude), str(GPSLongitudeRef), \
 				str(GPSLatitude), str(GPSLatitudeRef), str(GPSImgDirection), str(GPSTimeStamp), \
 				str(DateTimeDigitized), str(ImageModel), str(photo_path)))
-				GPSLongitude = ""
 				GPSLongitude = ""	# Återställ variabler
 				GPSLongitudeRef = ""
 				GPSLatitude = ""
