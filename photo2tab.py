@@ -48,7 +48,7 @@ except:
 	tab_file = open(os.path.join(save_path, "photo2.tab"), "w")
 tab_file.write("id\tlongitude\tlongRef\tlatitude\tlatRef\timgDir\tgpsTime\tcameraTime\timgPath\n")
 
-# Göra om dms lista till d.dd
+# Göra om dms lista till D.ddd
 def dms2ddd(dms):
 	deg = float(dms.values[0].num) / float(dms.values[0].den)
 	min = float(dms.values[1].num) / float(dms.values[1].den)
@@ -88,11 +88,11 @@ for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och u
 						GPSLongitude = dms2ddd(tags[tag])
 						countTagged += 1
 					if tag == "GPS GPSLongitudeRef":
-						GPSLongitudeRef = tags[tag]
+						GPSLongitudeRef = str(tags[tag])
 					if tag == "GPS GPSLatitude":
 						GPSLatitude = dms2ddd(tags[tag])
 					if tag == "GPS GPSLatitudeRef":
-						GPSLatitudeRef = tags[tag]
+						GPSLatitudeRef = str(tags[tag])
 					if tag == "GPS GPSImgDirection":
 						GPSImgDirection = float(tags[tag].values[0].num) / float(tags[tag].values[0].den)
 					if tag == "GPS GPSTimeStamp":
@@ -101,9 +101,9 @@ for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och u
 						DateTimeDigitized = tags[tag]
 			f.close() # Stäng bildfilen
 			if str(GPSLongitude) != "": # Om det är en bild med GPS info så...
-				if GPSLatitudeRef == "S":
+				if GPSLatitudeRef != "N":
 					GPSLatitude = 0 - GPSLatitude
-				if GPSLongitudeRef == "W":
+				if GPSLongitudeRef != "E":
 					GPSLongitude = 0 - GPSLongitude
 				tab_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (str(countTagged), \
 				str(GPSLongitude), str(GPSLongitudeRef), \
