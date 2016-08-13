@@ -46,7 +46,7 @@ try:
 except:
 	save_path = raw_input("Var skall resultatet sparas? ")
 	tab_file = open(os.path.join(save_path, "photo2.tab"), "w")
-tab_file.write("id\tlongitude\tlongRef\tlatitude\tlatRef\timgDir\tgpsTime\tcameraTime\timgPath\n")
+tab_file.write("id\tlongitude\tlongRef\tlatitude\tlatRef\timgDir\tgpsTime\tcameraTime\tcamera\timgPath\n")
 
 # Göra om dms lista till D.ddd
 def dms2ddd(dms):
@@ -79,7 +79,8 @@ photos = os.listdir(folder_path)
 countTagged = 0
 countPhotos = 0
 countFiles = 0
-GPSLongitude = "" # Definieras för att vara testflagga
+GPSLongitude = ""
+ImageModel = ""
 for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och underkataloger
 	for photo in files: # Gå igenom alla filer i alla kataloger
 		countFiles += 1
@@ -105,17 +106,28 @@ for root, dirs, files in os.walk(folder_path, topdown=False): # Alla filer och u
 						GPSTimeStamp = time2string(tags[tag])
 					if tag == "EXIF DateTimeDigitized":
 						DateTimeDigitized = tags[tag]
+					if tag == "Image Model":
+						ImageModel = tags[tag]
 			f.close() # Stäng bildfilen
 			if str(GPSLongitude) != "": # Om det är en bild med GPS info så...
 				if GPSLatitudeRef != "N":
 					GPSLatitude = 0 - GPSLatitude
 				if GPSLongitudeRef != "E":
 					GPSLongitude = 0 - GPSLongitude
-				tab_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (str(countTagged), \
+				tab_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (str(countTagged), \
 				str(GPSLongitude), str(GPSLongitudeRef), \
 				str(GPSLatitude), str(GPSLatitudeRef), str(GPSImgDirection), str(GPSTimeStamp), \
-				str(DateTimeDigitized), str(photo_path)))
-				GPSLongitude = ""	# Återställ flagga	
+				str(DateTimeDigitized), str(ImageModel), str(photo_path)))
+				GPSLongitude = ""
+				GPSLongitude = ""	# Återställ variabler
+				GPSLongitudeRef = ""
+				GPSLatitude = ""
+				GPSLatitudeRef = ""
+				GPSImgDirection = ""
+				GPSTimeStamp = ""
+				DateTimeDigitized = ""
+				ImageModel = ""
+
 		print("\r%s Filer och kataloger. %s Bilder. %s med GPS positioner." % \
 		(countFiles, countPhotos, countTagged)), # Skriv ut processens status på skärmen
 
