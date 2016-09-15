@@ -75,7 +75,7 @@ sudo apt-get install -y -qq docky
 echo Installing Firewall...
 sudo apt-get install -y -qq gufw python-gi
 echo Installing encryption for flash disks...
-sudo apt-get install -y -qq cryptsetup
+sudo apt-get install -y -qq cryptsetup gnome-disk-utility
 clear
 echo Do you want Science software CAD/GIS/etc Y/n?
 read scis
