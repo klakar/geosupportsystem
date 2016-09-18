@@ -60,7 +60,13 @@ sudo add-apt-repository -y -u ppa:obsproject/obs-studio
 clear
 echo Installing videoplayers, audio software and editors...
 sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive kde-runtime audacity mixxx obs-studio guvcview lmms
-sudo echo "load-module module-echo-cancel aec_method=webrtc" > ~/.config/pulse/default.pa
+sudo apt-get install -y -qq libwebrtc-audio-processing-dev
+cp -n /etc/pulse/default.pa ~/.config/pulse/
+echo "### Load echo cancellation module" >> ~/.config/pulse/default.pa
+echo "load-module module-echo-cancel source_name=echosource aec_method=webrtc" >> ~/.config/pulse/default.pa
+echo "set-default-source echosource" >> ~/.config/pulse/default.pa
+pulseaudio -k
+pulseaudio -D
 clear
 echo Installing photo and graphics software...
 sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend handbrake synfigstudio
@@ -82,16 +88,16 @@ echo Do you want Science software CAD/GIS/etc Y/n?
 read scis
 if [ "$scis" != "n" ]; then
   sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel
-  echo Do you want stable or nightly S/n?
+  echo Do you want stable or nightly QGIS S/n?
   read stni
   if [ "$stni" != "n" ]; then
     echo deb http://qgis.org/debian xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
   else
     echo deb http://qgis.org/debian-nightly xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
   fi
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
   sudo add-apt-repository -y -u ppa:ubuntugis/ubuntugis-unstable
-  sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass
+  sudo apt-get update -qq && sudo apt-get install -y -qq qgis python-qgis qgis-plugin-grass qgis-plugin-globe
   sudo apt-get install -y -qq saga python-saga libotb otb-bin python-otb python-exif python-scipy libwxgtk3.0-dev libgdal-dev
   sudo apt-get install -y -qq pyqt4-dev-tools python-sphinx bluefish git python-pip
 fi
