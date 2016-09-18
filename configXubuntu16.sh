@@ -60,6 +60,7 @@ sudo add-apt-repository -y -u ppa:obsproject/obs-studio
 clear
 echo Installing videoplayers, audio software and editors...
 sudo apt-get install -y -qq leafpad vlc browser-plugin-vlc kodi kdenlive kde-runtime audacity mixxx obs-studio guvcview lmms
+sudo echo "load-module module-echo-cancel aec_method=webrtc" > ~/.config/pulse/default.pa
 clear
 echo Installing photo and graphics software...
 sudo apt-get install -y -qq darktable  gimp inkscape blender hugin enblend handbrake synfigstudio
