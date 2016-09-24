@@ -87,7 +87,7 @@ clear
 echo Do you want Science software CAD/GIS/etc Y/n?
 read scis
 if [ "$scis" != "n" ]; then
-  sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel
+  sudo apt-get install -y meshlab freecad pgadmin3 gpsbabel gpsbabel-gui mtkbabel gpsd gpsd-clients
   echo Do you want stable or nightly QGIS S/n?
   read stni
   if [ "$stni" != "n" ]; then
