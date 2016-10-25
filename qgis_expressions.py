@@ -51,9 +51,8 @@ def grid_convergence(values, feature, parent):
 	y_min = extent.yMinimum()
 	x_max = extent.xMaximum()
 	y_max = extent.yMaximum()
-	grid_y = y_min + (( y_max-y_min)/2)
-	grid_x = x_min + (( x_max-x_min)/2)
-	grid_y_plus = grid_y + 1000
+	center_y = y_min + (( y_max-y_min)/2)
+	center_x = x_min + (( x_max-x_min)/2)
 	
 	current_epsg = int(iface.mapCanvas().mapRenderer().destinationCrs().authid().split(':')[1])
 	current_crs = QgsCoordinateReferenceSystem(current_epsg)
@@ -61,10 +60,15 @@ def grid_convergence(values, feature, parent):
 	
 	tr_crs = QgsCoordinateTransform(current_crs, target_crs)
 	
-	geo_start = tr_crs.transform(QgsPoint(grid_x, grid_y))
-	geo_end = tr_crs.transform(QgsPoint(grid_x, grid_y_plus))
-	return geo_start.azimuth(geo_end)
-	#return "1:%s\n 2:%s" %(geo_start, geo_end)
+	center_start = QgsPoint(center_x, center_y)
+	ll_start = tr_crs.transform(center_start)
+	ll_end = QgsPoint(ll_start.x(), ll_start.y() + 1)
+	
+	tr2_crs = QgsCoordinateTransform(target_crs, current_crs)
+	north_end = tr2_crs.transform(ll_end)
+	
+	#return ll_end.x()
+	return center_start.azimuth(north_end)
 	
 @qgsfunction(0, "Python")
 def grid_x_min(values, feature, parent):
@@ -109,4 +113,3 @@ def grid_y_max(values, feature, parent):
 	y_max = extent.yMaximum()
 	result = y_max
 	return result
-	
