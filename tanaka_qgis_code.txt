@@ -1,0 +1,19 @@
+Python Code to create azimuth:
+
+p1 = $geom.asPolyline()[0]
+p2 = $geom.asPolyline()[-1]
+a = p1.azimuth(p2)
+if a < 0:
+    a += 360
+value = a
+
+
+Styling expression to set line color based on azimuth attribute value:
+
+color_hsl( 0,0,
+	scale_linear( 
+			abs(
+				(if( "azimuth" < 45,  "azimuth" +315, "azimuth" -45))
+			-180)
+		,0,180,0,100)
+	)
