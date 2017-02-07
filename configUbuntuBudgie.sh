@@ -29,6 +29,7 @@ read laptop
 # Add resources
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
+sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
 
 # Update/Upgrade
 u
@@ -41,6 +42,7 @@ echo "neofetch" >> ~/.bashrc
 i firefox
 i crypsetup
 i gnome-disk-utility
+i simplescreenrecorder
 
 # Laptop tools
 if [$laptop = "y"]; then
