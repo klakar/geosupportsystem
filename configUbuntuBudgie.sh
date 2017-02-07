@@ -28,6 +28,7 @@ read laptop
 
 # Add resources
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
+sudo add-apt-repository ppa:obsproject/obs-studio -y
 
 # Update/Upgrade
 u
@@ -60,7 +61,10 @@ fi
 dconf write /com/solus-project/budgie-wm/attach-modal-dialogs false
 
 # Clean Up
+sudo apt -qq -y -f install
+sudo apt -qq -y dist-upgrade
 sudo apt -qq -y autoremove
+u
 
 ubuntu-mate-welcome --boutique &
 clear
