@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# Skriptet tar data från gpsd och bilder från RICHO THETA S och kombinerar dessa
+# Resultatet sparas på den plats där skriptet körs (bilder och loggfil).
 # sudo apt install cgps cgps-clients gpsd jq gphoto2
 
 if [ -e "bildlista.csv" ]
