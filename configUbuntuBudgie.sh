@@ -30,6 +30,7 @@ read laptop
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
+sudo add-apt-repository ppa:libreoffice/ppa -y
 
 # Update/Upgrade
 u
