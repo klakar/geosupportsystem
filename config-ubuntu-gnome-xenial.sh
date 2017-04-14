@@ -26,6 +26,8 @@ echo "Dropbox och kontor? J/n"
 read dropboxkontor
 echo "Laptop verktyg? j/N"
 read laptop
+echo "MATE Software Botique? n/N"
+read mate
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -76,10 +78,31 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
 echo deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main | sudo tee -a /etc/apt/sources.list.d/qgis.list
 u
-i qgis python-qgis qgis-plugin-grass
-i gpsbabel mtkbabel gpsd gpsd-clients gpsbabel-gui meshlab freecad pgadmin3
-i saga python-saga libotb otb-bin python-otb python-exif python-scipy libwxgtk3.0-dev libgdal-dev
-i pyqt4-dev-tools python-sphinx bluefish git python-pip
+i qgis 
+i python-qgis 
+i qgis-plugin-grass
+i gpsbabel 
+i mtkbabel 
+i gpsd 
+i gpsd-clients 
+i gpsbabel-gui 
+i meshlab 
+i freecad 
+i pgadmin3
+i saga 
+i python-saga 
+i libotb 
+i otb-bin 
+i python-otb 
+i python-exif 
+i python-scipy 
+i libwxgtk3.0-dev 
+i libgdal-dev
+i pyqt4-dev-tools 
+i python-sphinx 
+i bluefish 
+i git 
+i python-pip
 fi
 
 if [ "$spel" != "n" ]
@@ -119,10 +142,15 @@ firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
 fi
 
+if [ $mate = "y" ]
+then
+i ubuntu-mate-welcome
+fi
 
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
-echo "Att göra:" > postinstall.txt
+echo "Installationen är klar!" > postinstall.txt
+echo "Att göra:" >> postinstall.txt
 echo "1. Lägg till Lightning kalendern i Thunderbird" >> postinstall.txt
 echo "   Lägg till Provider for Google Calendar om du har Google konto" >> postinstall.txt
 echo "2. Lägg till/Aktivera extensions till Gnome:" >> postinstall.txt
@@ -133,6 +161,8 @@ echo "   - Dynamic Panel Transparency" >> postinstall.txt
 echo "   - Coverflow Alt-Tab" >> postinstall.txt
 echo "3. Ljudet med pavucontol (vid behov)" >> postinstall.txt
 echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
+echo "5. Ställ in Dropbox (om installerat)" >> postinstall.txt
+echo "6. Lägg till fler program via Software Botique (om installerat)" >> postinstall.txt
 gedit postinstall.txt &
 software-properties-gtk --open-tab=4 &
 firefox extensions.gnome.org &
@@ -142,3 +172,5 @@ if [ "$dropboxkontor" != "n" ]
 then
 ~/.dropbox-dist/dropboxd &
 fi
+clear
+echo "Nu kan du stänga detta fönster"
