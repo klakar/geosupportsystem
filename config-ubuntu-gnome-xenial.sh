@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Baserat på Ubuntu Gnome 17.04
+#Baserat på Ubuntu Gnome 16.04
 
 i () {
    sudo apt install -y -qq $1
@@ -27,6 +27,8 @@ read dropboxkontor
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 sudo add-apt-repository ppa:team-xbmc/ppa -y
+sudo add-apt-repository ppa:webupd8team/java -y
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
 sudo add-apt-repository ppa:hugin/hugin-builds -y
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 sudo add-apt-repository ppa:libreoffice/ppa -y
@@ -45,6 +47,10 @@ i kdenlive
 i vlc
 i audacity
 i kodi
+i guvcview
+i enblend
+i handbrake
+i pavucontrol
 fi
 
 if ["$grafikfoto"]; then
@@ -57,11 +63,25 @@ i hugin
 fi
 
 if ["$gisochsant" != "n"]; then
-
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
+echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
+echo deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main | sudo tee -a /etc/apt/sources.list.d/qgis.list
+u
+i qgis python-qgis qgis-plugin-grass
+i gpsbabel mtkbabel gpsd gpsd-clients gpsbabel-gui meshlab freecad pgadmin3
+i saga python-saga libotb otb-bin python-otb python-exif python-scipy libwxgtk3.0-dev libgdal-dev
+i pyqt4-dev-tools python-sphinx bluefish git python-pip
 fi
 
 if ["$spel" != "n"]; then
 i steam-installer
+i oracle-java8-installer
+mkdir minecraft
+cd minecraft
+wget http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
+chmod +x Minecraft.jar
+cd ..
 fi
 
 if ["$spotify" != "n"]; then
@@ -77,9 +97,10 @@ sudo dpkg -i simplenote-1.0.8.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 i thunderbird
-
+i virtualbox
 fi
 
+sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 
 echo "Att göra:"
 echo "1. Lägg till Lightning kalendern i Thunderbird"
@@ -90,3 +111,4 @@ echo "   - Applications Menu"
 echo "   - OpenWeather"
 echo "   - Dynamic Panel Transparency"
 echo "   - Coverflow Alt-Tab"
+echo "3. Ljudet med pavucontol"
