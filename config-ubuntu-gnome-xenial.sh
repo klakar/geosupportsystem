@@ -42,6 +42,8 @@ i sshfs
 i neofetch
 echo "neofetch" >> ~/.bashrc
 i cryptsetup
+i ubuntu-restricted-extras
+i libavcodec-extra
 
 if [ "$ljudvideo" != "n" ]
 then
@@ -82,7 +84,7 @@ fi
 
 if [ "$spel" != "n" ]
 then
-i steam-installer
+i steam
 i oracle-java8-installer
 mkdir minecraft
 cd minecraft
