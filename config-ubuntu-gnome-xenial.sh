@@ -3,6 +3,7 @@
 #Baserat på Ubuntu Gnome 16.04
 
 i () {
+   clear
    sudo apt install -y -qq $1
 }
 u () {
@@ -101,13 +102,12 @@ then
 wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb"
 sudo dpkg -i simplenote-1.0.8.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
 i thunderbird
 i virtualbox
 fi
 
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
-
+clear
 echo "Att göra:"
 echo "1. Lägg till Lightning kalendern i Thunderbird"
 firefox extensions.gnome.org
@@ -118,3 +118,4 @@ echo "   - OpenWeather"
 echo "   - Dynamic Panel Transparency"
 echo "   - Coverflow Alt-Tab"
 echo "3. Ljudet med pavucontol"
+echo "4. Kör ~/.dropbox-dist/dropboxd"
