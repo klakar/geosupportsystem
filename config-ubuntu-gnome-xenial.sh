@@ -40,7 +40,8 @@ i neofetch
 echo "neofetch" >> ~/.bashrc
 i cryptsetup
 
-if ["$ljudvideo" != "n"]; then
+if [ "$ljudvideo" != "n" ]
+then
 i breeze-icon-theme
 i obs-studio
 i kdenlive
@@ -53,7 +54,8 @@ i handbrake
 i pavucontrol
 fi
 
-if ["$grafikfoto"]; then
+if [ "$grafikfoto" != "n" ]
+then
 i gimp
 i darktable
 i inkscape
@@ -62,7 +64,8 @@ i blender
 i hugin
 fi
 
-if ["$gisochsant" != "n"]; then
+if [ "$gisochsant" != "n" ]
+then
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
@@ -74,7 +77,8 @@ i saga python-saga libotb otb-bin python-otb python-exif python-scipy libwxgtk3.
 i pyqt4-dev-tools python-sphinx bluefish git python-pip
 fi
 
-if ["$spel" != "n"]; then
+if [ "$spel" != "n" ]
+then
 i steam-installer
 i oracle-java8-installer
 mkdir minecraft
@@ -84,14 +88,16 @@ chmod +x Minecraft.jar
 cd ..
 fi
 
-if ["$spotify" != "n"]; then
+if [ "$spotify" != "n" ]
+then
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 u
 i spotify-client
 fi
 
-if ["$dropboxkontor" != "n"]; then
+if [ "$dropboxkontor" != "n" ]
+then
 wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb"
 sudo dpkg -i simplenote-1.0.8.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
