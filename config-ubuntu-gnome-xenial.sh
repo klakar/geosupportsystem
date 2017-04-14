@@ -122,18 +122,22 @@ fi
 
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
-echo "Att göra:"
-echo "1. Lägg till Lightning kalendern i Thunderbird"
-echo "2. Lägg till/Aktivera extensions till Gnome:"
-echo "   - Dash to Panel"
-echo "   - Applications Menu"
-echo "   - OpenWeather"
-echo "   - Dynamic Panel Transparency"
-echo "   - Coverflow Alt-Tab"
-echo "3. Ljudet med pavucontol (vid behov)"
-echo "4. Kör ~/.dropbox-dist/dropboxd"
+echo "Att göra:" > postinstall.txt
+echo "1. Lägg till Lightning kalendern i Thunderbird" >> postinstall.txt
+echo "   Lägg till Provider for Google Calendar om du har Google konto" >> postinstall.txt
+echo "2. Lägg till/Aktivera extensions till Gnome:" >> postinstall.txt
+echo "   - Dash to Panel" >> postinstall.txt
+echo "   - Applications Menu" >> postinstall.txt
+echo "   - OpenWeather" >> postinstall.txt
+echo "   - Dynamic Panel Transparency" >> postinstall.txt
+echo "   - Coverflow Alt-Tab" >> postinstall.txt
+echo "3. Ljudet med pavucontol (vid behov)" >> postinstall.txt
+echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
+gedit postinstall.txt &
+software-properties-gtk --open-tab=4 &
 firefox extensions.gnome.org &
 thunderbird &
+
 if [ "$dropboxkontor" != "n" ]
 then
 ~/.dropbox-dist/dropboxd &
