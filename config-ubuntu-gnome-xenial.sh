@@ -24,6 +24,8 @@ echo "Spotify? J/n"
 read spotify
 echo "Dropbox och kontor? J/n"
 read dropboxkontor
+echo "Laptop verktyg? j/N"
+read laptop
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -105,6 +107,16 @@ wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 i thunderbird
 i virtualbox
 fi
+
+if [ $laptop = "y" ]
+then
+i powertop
+i laptop-mode-tools
+sudo powertop --auto-tune --html
+firefox powertop.html &
+sudo update-rc.d laptop-mode defaults
+fi
+
 
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
