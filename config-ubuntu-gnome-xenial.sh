@@ -44,6 +44,7 @@ i sshfs
 i neofetch
 echo "neofetch" >> ~/.bashrc
 i cryptsetup
+i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
 
@@ -59,6 +60,18 @@ i guvcview
 i enblend
 i handbrake
 i pavucontrol
+i libdvd-pkg
+i libaacs0
+i libbluray-bdj
+i libbluray1
+mkdir -p ~/.config/aacs/
+cd ~/.config/aacs/ && wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
+cd ~
+sudo add-apt-repository ppa:heyarje/makemkv-beta
+u
+i makemkv-bin 
+i makemkv-oss
+
 fi
 
 if [ "$grafikfoto" != "n" ]
