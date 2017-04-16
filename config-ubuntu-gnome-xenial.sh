@@ -47,6 +47,7 @@ i cryptsetup
 i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
+i alacarte
 
 if [ "$ljudvideo" != "n" ]
 then
