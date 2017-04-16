@@ -177,10 +177,12 @@ echo "3. Ljudet med pavucontol (vid behov)" >> postinstall.txt
 echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
 echo "5. Ställ in Dropbox (om installerat)" >> postinstall.txt
 echo "6. Lägg till fler program via Software Botique (om installerat)" >> postinstall.txt
-gedit postinstall.txt &
+echo "7. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
+alacarte &
+thunderbird &
 software-properties-gtk --open-tab=4 &
 firefox extensions.gnome.org &
-thunderbird &
+gedit postinstall.txt &
 
 if [ "$dropboxkontor" != "n" ]
 then
