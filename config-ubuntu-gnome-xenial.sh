@@ -73,7 +73,6 @@ sudo add-apt-repository ppa:heyarje/makemkv-beta
 u
 i makemkv-bin 
 i makemkv-oss
-
 fi
 
 if [ "$grafikfoto" != "n" ]
