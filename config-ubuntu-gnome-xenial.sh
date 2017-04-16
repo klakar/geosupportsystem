@@ -48,6 +48,7 @@ i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
 i alacarte
+i tracker-gui
 
 if [ "$ljudvideo" != "n" ]
 then
@@ -178,6 +179,7 @@ echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
 echo "5. Ställ in Dropbox (om installerat)" >> postinstall.txt
 echo "6. Lägg till fler program via Software Botique (om installerat)" >> postinstall.txt
 echo "7. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
+echo "8. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
