@@ -49,6 +49,7 @@ i ubuntu-restricted-extras
 i libavcodec-extra
 i alacarte
 i tracker-gui
+i gparted
 
 if [ "$ljudvideo" != "n" ]
 then
