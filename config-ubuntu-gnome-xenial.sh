@@ -37,6 +37,7 @@ sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
 sudo add-apt-repository ppa:hugin/hugin-builds -y
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 sudo add-apt-repository ppa:libreoffice/ppa -y
+sudo add-apt-repository ppa:thomas-schiex/blender -y
 
 u
 
