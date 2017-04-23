@@ -57,6 +57,7 @@ then
 i breeze-icon-theme
 i obs-studio
 i kdenlive
+i kazam
 i vlc
 i audacity
 i kodi
