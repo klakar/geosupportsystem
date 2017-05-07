@@ -18,7 +18,7 @@ echo "Grafik och foto? J/n"
 read grafikfoto
 echo "GIS och sånt...? J/n"
 read gisochsant
-echo "UbuntuGIS? \(endast 16.04\) J/n"
+echo "UbuntuGIS? (endast 16.04) j/N"
 read ubuntugis
 echo "Spel och Steam? J/n"
 read spel
@@ -92,7 +92,8 @@ fi
 
 if [ "$gisochsant" != "n" ]
 then
-if [ "$ubuntugis" != "n" ]
+if [ "$ubuntugis" = "y" ]
+then
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
