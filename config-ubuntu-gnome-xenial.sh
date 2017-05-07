@@ -92,7 +92,7 @@ fi
 
 if [ "$gisochsant" != "n" ]
 then
-if [ "$ubuntugis" = "y" ]
+if [ "$ubuntugis" = "j" ]
 then
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
