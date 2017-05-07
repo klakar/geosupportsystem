@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Baserat på Ubuntu Gnome 16.04
+#Baserat på Ubuntu Gnome
 
 i () {
    clear
@@ -18,6 +18,8 @@ echo "Grafik och foto? J/n"
 read grafikfoto
 echo "GIS och sånt...? J/n"
 read gisochsant
+echo "UbuntuGIS? \(endast 16.04\) J/n"
+read ubuntugis
 echo "Spel och Steam? J/n"
 read spel
 echo "Spotify? J/n"
@@ -90,10 +92,16 @@ fi
 
 if [ "$gisochsant" != "n" ]
 then
+if [ "$ubuntugis" != "n" ]
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
 echo deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main | sudo tee -a /etc/apt/sources.list.d/qgis.list
+else
+dist=$(lsb_release -c | cut -d':' -f 2 | xargs echo -n)
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
+echo deb http://qgis.org/debian $dist main | sudo tee /etc/apt/sources.list.d/qgis.list
+fi
 u
 i qgis 
 i python-qgis 
@@ -176,12 +184,12 @@ echo "   - Applications Menu" >> postinstall.txt
 echo "   - OpenWeather" >> postinstall.txt
 echo "   - Dynamic Panel Transparency" >> postinstall.txt
 echo "   - Coverflow Alt-Tab" >> postinstall.txt
-echo "3. Ljudet med pavucontol (vid behov)" >> postinstall.txt
+echo "3. Ljudet med pavucontol - vid behov" >> postinstall.txt
 echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
-echo "5. Ställ in Dropbox (om installerat)" >> postinstall.txt
-echo "6. Lägg till fler program via Software Botique (om installerat)" >> postinstall.txt
+echo "5. Ställ in Dropbox - om installerat" >> postinstall.txt
+echo "6. Lägg till fler program via Software Botique - om installerat" >> postinstall.txt
 echo "7. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
-echo "8. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
+echo "8. Om \"tracker\" kräver mycket ram \(kolla med htop\), ändra hur systemet indexerar filer" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
