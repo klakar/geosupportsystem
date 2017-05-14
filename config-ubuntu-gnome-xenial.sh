@@ -24,6 +24,8 @@ echo "Spotify? J/n"
 read spotify
 echo "Dropbox och kontor? J/n"
 read dropboxkontor
+echo "Play on Linux - SketchUp, AirPort Tool, etc J/n"
+read playonlinux
 echo "Laptop verktyg? j/N"
 read laptop
 echo "MATE Software Botique? n/N"
@@ -148,6 +150,11 @@ u
 i spotify-client
 fi
 
+if [ "$playonlinux" != "n" ]
+then
+i playonlinux
+fi
+
 if [ "$dropboxkontor" != "n" ]
 then
 wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb"
@@ -186,9 +193,10 @@ echo "   - Coverflow Alt-Tab" >> postinstall.txt
 echo "3. Ljudet med pavucontol - vid behov" >> postinstall.txt
 echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
 echo "5. Ställ in Dropbox - om installerat" >> postinstall.txt
-echo "6. Lägg till fler program via Software Botique - om installerat" >> postinstall.txt
-echo "7. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
-echo "8. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
+echo "6. Om du installerat PlayOnLinux så starta den för att lägga till PC mjukvara" >> postinstall.txt
+echo "7. Lägg till fler program via Software Botique - om installerat" >> postinstall.txt
+echo "8. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
+echo "9. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
@@ -199,5 +207,11 @@ if [ "$dropboxkontor" != "n" ]
 then
 ~/.dropbox-dist/dropboxd &
 fi
+
+if [ "$playonlinux" != "n" ]
+then
+playonlinux &
+fi
+
 clear
 echo "Nu kan du stänga detta fönster"
