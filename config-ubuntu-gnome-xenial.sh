@@ -28,7 +28,7 @@ echo "Play on Linux - SketchUp, AirPort Tool, etc J/n"
 read playonlinux
 echo "Laptop verktyg? j/N"
 read laptop
-echo "MATE Software Botique? n/N"
+echo "MATE Software Botique? j/N"
 read mate
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
@@ -53,6 +53,7 @@ i libavcodec-extra
 i alacarte
 i tracker-gui
 i gparted
+# Fixa så att Qt applikationer följer GTK+ tema
 echo "QT_STYLE_OVERRIDE=GTK+" | sudo tee -a /etc/environment
 
 if [ "$ljudvideo" != "n" ]
@@ -191,6 +192,7 @@ echo "   - Applications Menu" >> postinstall.txt
 echo "   - OpenWeather" >> postinstall.txt
 echo "   - Dynamic Panel Transparency" >> postinstall.txt
 echo "   - Coverflow Alt-Tab" >> postinstall.txt
+echo "   - ShellTile" >> postinstall.txt
 echo "3. Ljudet med pavucontol - vid behov" >> postinstall.txt
 echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
 echo "5. Ställ in Dropbox - om installerat" >> postinstall.txt
