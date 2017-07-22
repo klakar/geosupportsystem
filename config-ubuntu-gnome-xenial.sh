@@ -53,6 +53,7 @@ i libavcodec-extra
 i alacarte
 i tracker-gui
 i gparted
+echo "QT_STYLE_OVERRIDE=GTK+" | sudo tee -a /etc/environment
 
 if [ "$ljudvideo" != "n" ]
 then
