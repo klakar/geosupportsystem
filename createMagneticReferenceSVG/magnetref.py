@@ -6,7 +6,7 @@ def generatesvg(g, m, t):
    svg="<?xml version=\"1.0\" standalone=\"no\"?>"
    svg+="<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
    svg+="  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
-   svg+="<svg width=\"5cm\" height=\"5cm\" viewBox=\"0 0 400 400\""
+   svg+="<svg width=\"10cm\" height=\"10cm\" viewBox=\"0 0 400 400\""
    svg+="     xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">"
    svg+="  <title>North Arrows</title>"
    svg+="  <defs"
