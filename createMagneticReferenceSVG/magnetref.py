@@ -73,8 +73,8 @@ def generatesvg(g, m, t):
    svg+="</svg>"
    gx = 200 + math.sin(math.radians(g)) * 350
    gy = 380 - math.cos(math.radians(g)) * 350
-   mx = 200 + math.sin(math.radians(m-t)) * 280
-   my = 380 - math.cos(math.radians(m-t)) * 280
+   mx = 200 + math.sin(math.radians(t+m)) * 280
+   my = 380 - math.cos(math.radians(t+m)) * 280
    tx = 200 + math.sin(math.radians(t)) * 315
    ty = 380 - math.cos(math.radians(t)) * 315
    return svg % (gx, gy, mx, my, tx, ty, g, m, t)
