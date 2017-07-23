@@ -64,7 +64,7 @@ def generatesvg(g, m, t):
    svg+="  </text>"
    svg+="  <text x=\"220\" y=\"365\""
    svg+="        font-size=\"15px\""
-   svg+="        font-family=\"sans-serif\" >Mag Dev = %s°"
+   svg+="        font-family=\"sans-serif\" >Mag Decl. = %s°"
    svg+="  </text>"
    svg+="  <text x=\"220\" y=\"350\""
    svg+="        font-size=\"15px\""
@@ -73,8 +73,8 @@ def generatesvg(g, m, t):
    svg+="</svg>"
    gx = 200 + math.sin(math.radians(g)) * 350
    gy = 380 - math.cos(math.radians(g)) * 350
-   mx = 200 + math.sin(math.radians(m)) * 280
-   my = 380 - math.cos(math.radians(m)) * 280
+   mx = 200 + math.sin(math.radians(m-t)) * 280
+   my = 380 - math.cos(math.radians(m-t)) * 280
    tx = 200 + math.sin(math.radians(t)) * 315
    ty = 380 - math.cos(math.radians(t)) * 315
    return svg % (gx, gy, mx, my, tx, ty, g, m, t)
