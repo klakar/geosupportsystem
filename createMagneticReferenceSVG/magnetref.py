@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys, getopt, math
+from subprocess import call
 
 def generatesvg(g, m, t):
    svg="<?xml version=\"1.0\" standalone=\"no\"?>"
@@ -41,9 +42,9 @@ def generatesvg(g, m, t):
    svg+="        font-size=\"20px\""
    svg+="        font-family=\"sans-serif\""
    svg+="        text-anchor=\"middle\""
-   svg+="        writing-mode=\"tb\" >"
+   svg+="        transform=\"rotate(90)\" >"
    svg+="         <tspan"
-   svg+="         x=\"10\""
+   svg+="         x=\"0\""
    svg+="         y=\"0\""
    svg+="         id=\"grid_text\">GN</tspan> "
    svg+="        </text>"
@@ -81,11 +82,12 @@ def generatesvg(g, m, t):
 
 def main(argv):
    outputfile = 'magnetref.svg'
+   cpng = 'magnetref.png'
    gridnorth = 0
    magnorth = 0
    truenorth = 0
    try:
-      opts, args = getopt.getopt(argv,"ho:g:m:t:",["ofile=","gnorth=","mnorth=","tnorth="])
+      opts, args = getopt.getopt(argv,"ho:g:m:t:p:",["ofile=","gnorth=","mnorth=","tnorth=","cpng="])
    except getopt.GetoptError:
       print('magnetref.py -o <outputfile> -g <grid north deg> -m <magnetic north deg> -t <true north deg>')
       sys.exit(2)
@@ -101,10 +103,16 @@ def main(argv):
          magnorth = eval(arg)
       elif opt in ("-t", "--tnorth"):
          truenorth = eval(arg)
+      elif opt in ("-p", "--cpng"):
+         cpng = arg
    svgfile = open(outputfile, "w")
    svgfile.write(generatesvg(gridnorth, magnorth, truenorth))
-   svgfile.close()   
+   svgfile.close()
+   try:
+      convert="convert -density 600 %s %s" %(outputfile, cpng)  
+      call(convert, shell=True)
+   except:
+      print('You need ImageMagick \"convert\" to create png-file')
 
 if __name__ == "__main__":
    main(sys.argv[1:])
-
