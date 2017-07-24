@@ -1,5 +1,18 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+'''
+Written by @klaskarlsson
+Licence LGPL
+
+Optional parameters:
+-g <deg> : Grid North Reference, default 0
+-t <deg> : True North Reference relative Grid North, default 0
+-m <deg> : Magnetic Declination relative True North, default 0
+-o <file name> : SVG file name, default "northref.svg"
+-p <file name> : PNG file name, default "northref.png"
+
+For PNG export to work ImageMagick command "convert" is required.
+'''
 import sys, getopt, math
 from subprocess import call
 
