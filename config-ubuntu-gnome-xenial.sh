@@ -77,6 +77,7 @@ mkdir -p ~/.config/aacs/
 cd ~/.config/aacs/ && wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
 cd ~
 sudo add-apt-repository ppa:heyarje/makemkv-beta
+sudo apt-get purge -yyqq gstreamer1.0-fluendo-mp3
 u
 i makemkv-bin 
 i makemkv-oss
