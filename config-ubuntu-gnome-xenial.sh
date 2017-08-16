@@ -212,6 +212,9 @@ echo "7. Lägg till fler program via Software Botique - om installerat" >> posti
 echo "8. Skapa egna genvägar i menyn med alacarte" >> postinstall.txt
 echo "9. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
 echo "10.Om du installerat SublimeText kanske du vill ha med Emmet?" >> postinstall.txt
+echo "    a. shift+ctrl+P sök efter Install Package Control" >> postinstall.txt
+echo "    b. Package Control: Install Package..." >> postinstall.txt
+echo "    c. Emmet" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
