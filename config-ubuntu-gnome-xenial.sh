@@ -30,6 +30,8 @@ echo "Laptop verktyg? j/N"
 read laptop
 echo "MATE Software Botique? j/N"
 read mate
+echo "Sublime Text? J/n"
+read sublime
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -167,7 +169,15 @@ i thunderbird
 i virtualbox
 fi
 
-if [ $laptop = "y" ]
+if [ "$sublime" != "n" ]
+then
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+u
+i sublime-text
+fi
+
+if [ $laptop = "j" ]
 then
 i powertop
 i laptop-mode-tools
@@ -199,8 +209,9 @@ echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
 echo "5. Ställ in Dropbox - om installerat" >> postinstall.txt
 echo "6. Om du installerat PlayOnLinux så starta den för att lägga till PC mjukvara" >> postinstall.txt
 echo "7. Lägg till fler program via Software Botique - om installerat" >> postinstall.txt
-echo "8. Skapa egna genvägar i menyn med alacarte" >> postgisinstall.txt
+echo "8. Skapa egna genvägar i menyn med alacarte" >> postinstall.txt
 echo "9. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
+echo "10.Om du installerat SublimeText kanske du vill ha med Emmet?" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
