@@ -134,6 +134,7 @@ i python-sphinx
 i bluefish 
 i git 
 i python-pip
+sudo pip install jupyter bokeh pandas
 fi
 
 if [ "$spel" != "n" ]
