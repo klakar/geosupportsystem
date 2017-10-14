@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Baserat på Ubuntu Gnome
+#Baserat på Xubuntu
 
 i () {
    clear
@@ -12,11 +12,14 @@ u () {
 clear
 
 # Välj paket
+echo "During installation you will be asked to type your password and"
+echo "confirm some license agrements for proprietary drivers and tools"
+echo "First, you need to select what extra packages you want to install:"
 echo "Sound and video? Y/n"
 read ljudvideo
 echo "Graphics and photo? Y/n"
 read grafikfoto
-echo "GIS and stuff...? Y/n"
+echo "GIS, Python and stuff...? Y/n"
 read gisochsant
 echo "Games and Steam? Y/n"
 read spel
@@ -34,6 +37,8 @@ echo "Sublime Text? Y/n"
 read sublime
 echo "Internet options (like Chromium)? J/n"
 read internet
+echo "A nice Dock for your program starters? J/n"
+read dock
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -44,6 +49,7 @@ sudo add-apt-repository ppa:hugin/hugin-builds -y
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 sudo add-apt-repository ppa:libreoffice/ppa -y
 sudo add-apt-repository ppa:thomas-schiex/blender -y
+sudo add-apt-repository ppa:papirus/papirus -y
 
 u
 
@@ -55,10 +61,11 @@ i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
 i alacarte
-i tracker-gui
 i gparted
-# Fixa så att Qt applikationer följer GTK+ tema
-echo "QT_STYLE_OVERRIDE=GTK+" | sudo tee -a /etc/environment
+i papirus-icon-theme
+i cowsay
+wget https://github.com/klakar/geosupportsystem/raw/master/Systems-Linux-icon.png
+sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 
 if [ "$ljudvideo" != "n" ]
 then
@@ -73,14 +80,14 @@ i guvcview
 i enblend
 i handbrake
 i pavucontrol
-i libdvd-pkg
+i libdvd-pkgppa:papirus/papirus
 i libaacs0
 i libbluray-bdj
-i libbluray1
+i libbluray2kodi
 mkdir -p ~/.config/aacs/
 cd ~/.config/aacs/ && wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
 cd ~
-sudo add-apt-repository ppa:heyarje/makemkv-beta
+sudo add-apt-repository -y ppa:heyarje/makemkv-beta
 sudo apt-get purge -yyqq gstreamer1.0-fluendo-mp3
 u
 i makemkv-bin 
@@ -95,6 +102,7 @@ i inkscape
 i synfigstudio
 i blender
 i hugin
+i krita
 fi
 
 if [ "$gisochsant" != "n" ]
@@ -103,11 +111,11 @@ dist=$(lsb_release -c | cut -d':' -f 2 | xargs echo -n)
 if [ "$dist" = "xenial" ]
 then
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 echo deb http://qgis.org/ubuntugis xenial main | sudo tee /etc/apt/sources.list.d/qgis.list
 echo deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main | sudo tee -a /etc/apt/sources.list.d/qgis.list
 else
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 echo deb http://qgis.org/debian $dist main | sudo tee /etc/apt/sources.list.d/qgis.list
 fi
 u
@@ -168,8 +176,12 @@ then
 wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb"
 sudo dpkg -i simplenote-1.0.8.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-i thunderbird
 i virtualbox
+wget "http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb"
+sudo apt-add-repository "deb http://us.archive.ubuntu.com/ubuntu/ xenial main universe" -y
+u
+i libpng12
+sudo dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
 fi
 
 if [ "$sublime" != "n" ]
@@ -180,7 +192,7 @@ u
 i sublime-text
 fi
 
-if [ $laptop = "j" ]
+if [ $laptop = "y" ]
 then
 i powertop
 i laptop-mode-tools
@@ -194,34 +206,43 @@ then
 i ubuntu-mate-welcome
 fi
 
+if [ $internet != "n" ]
+then
+i chromium-browser
+fi
+
+if [ $dock != "n" ]
+then
+i cairo-dock
+fi
+
+i gufw
+
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
-echo "Installationen är klar!" > postinstall.txt
-echo "Att göra:" >> postinstall.txt
-echo "1. Lägg till Lightning kalendern i Thunderbird" >> postinstall.txt
-echo "   Lägg till Provider for Google Calendar om du har Google konto" >> postinstall.txt
-echo "2. Lägg till/Aktivera extensions till Gnome:" >> postinstall.txt
-echo "   - Dash to Panel" >> postinstall.txt
-echo "   - Applications Menu" >> postinstall.txt
-echo "   - OpenWeather" >> postinstall.txt
-echo "   - Dynamic Panel Transparency" >> postinstall.txt
-echo "   - Coverflow Alt-Tab" >> postinstall.txt
-echo "   - ShellTile" >> postinstall.txt
-echo "3. Ljudet med pavucontol - vid behov" >> postinstall.txt
-echo "4. Kontrollera Ytterligare drivrutiner" >> postinstall.txt
-echo "5. Ställ in Dropbox - om installerat" >> postinstall.txt
-echo "6. Om du installerat PlayOnLinux så starta den för att lägga till PC mjukvara" >> postinstall.txt
-echo "7. Lägg till fler program via Software Botique - om installerat" >> postinstall.txt
-echo "8. Skapa egna genvägar i menyn med alacarte" >> postinstall.txt
-echo "9. Om \"tracker\" kräver mycket ram (kolla med htop), ändra hur systemet indexerar filer" >> postinstall.txt
-echo "10.Om du installerat SublimeText kanske du vill ha med Emmet?" >> postinstall.txt
-echo "    a. shift+ctrl+P sök efter Install Package Control" >> postinstall.txt
+echo "Installation is done!" > postinstall.txt
+echo "To do:" >> postinstall.txt
+echo "1. Add Lightning calender to Thunderbird" >> postinstall.txt
+echo "   Add Provider for Google Calendar if you have a Google account" >> postinstall.txt
+echo "2. Configure the Dock and add more launcers - if installed" >> postinstall.txt
+echo "3. Fix sound with pavucontol - if needed" >> postinstall.txt
+echo "4. Check for more drivers" >> postinstall.txt
+echo "5. Configure Dropbox - if installed" >> postinstall.txt
+echo "6. If you installed PlayOnLinux start it to add PC software" >> postinstall.txt
+echo "7. Add even more software from Software Botique - if installed" >> postinstall.txt
+echo "8. Create your own shortcuts with alacarte" >> postinstall.txt
+echo "9. Configure the whisker menu" >> postinstall.txt
+echo "10.Change theme, icons, wallpaper etc to your hearts content" >> postinstall.txt
+echo "11.If you installed SublimeText you might also want Emmet?" >> postinstall.txt
+echo "    a. shift+ctrl+P search for Install Package Control" >> postinstall.txt
 echo "    b. Package Control: Install Package..." >> postinstall.txt
 echo "    c. Emmet" >> postinstall.txt
+echo "" >> postinstall.txt
+echo "And you should probably restart the computer to be on the safe side" >> postinstall.txt
+echo "This text is saved in your HOME folder" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
-firefox extensions.gnome.org &
 gedit postinstall.txt &
 
 if [ "$dropboxkontor" != "n" ]
@@ -234,5 +255,10 @@ then
 playonlinux &
 fi
 
+if [ "$dock" != "n" ]
+then
+cairo-dock &
+fi
+
 clear
-echo "Nu kan du stänga detta fönster"
+cowsay -f tux "Everything finished! Now you can close this window. Don't forget to support Open Source."
