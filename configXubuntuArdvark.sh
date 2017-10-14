@@ -21,7 +21,7 @@ echo "Graphics and photo? Y/n"
 read grafikfoto
 echo "GIS, Python and stuff...? Y/n"
 read gisochsant
-echo "Games and Steam? Y/n"
+echo "Games on Steam? Y/n"
 read spel
 echo "Spotify? Y/n"
 read spotify
@@ -66,6 +66,9 @@ i papirus-icon-theme
 i cowsay
 wget https://github.com/klakar/geosupportsystem/raw/master/Systems-Linux-icon.png
 sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
+i realpath
+wget https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.4~136~ubuntu16.04.1_amd64.deb
+sudo dpkg -i conky-manager_2.4~136~ubuntu16.04.1_amd64.deb -y
 
 if [ "$ljudvideo" != "n" ]
 then
@@ -151,11 +154,7 @@ if [ "$spel" != "n" ]
 then
 i steam
 i oracle-java8-installer
-mkdir minecraft
-cd minecraft
-wget http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
-chmod +x Minecraft.jar
-cd ..
+i binfmt-support
 fi
 
 if [ "$spotify" != "n" ]
@@ -182,6 +181,9 @@ sudo apt-add-repository "deb http://us.archive.ubuntu.com/ubuntu/ xenial main un
 u
 i libpng12
 sudo dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
+wget https://download.teamviewer.com/download/teamviewer_i386.deb
+sudo dpkg -i teamviewer_i386.deb
+i nautilus
 fi
 
 if [ "$sublime" != "n" ]
@@ -237,13 +239,15 @@ echo "11.If you installed SublimeText you might also want Emmet?" >> postinstall
 echo "    a. shift+ctrl+P search for Install Package Control" >> postinstall.txt
 echo "    b. Package Control: Install Package..." >> postinstall.txt
 echo "    c. Emmet" >> postinstall.txt
+echo "12.If you installed Games, you might want to look at Software Boutique" >> postinstall.txt
+echo "   for more games, like Minecraft." >> postinstall.txt
 echo "" >> postinstall.txt
 echo "And you should probably restart the computer to be on the safe side" >> postinstall.txt
 echo "This text is saved in your HOME folder" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
-gedit postinstall.txt &
+mousepad postinstall.txt &
 
 if [ "$dropboxkontor" != "n" ]
 then
