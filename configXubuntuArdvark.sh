@@ -65,7 +65,9 @@ i gparted
 i papirus-icon-theme
 i cowsay
 wget https://github.com/klakar/geosupportsystem/raw/master/Systems-Linux-icon.png
+wget https://github.com/klakar/geosupportsystem/raw/master/Tux_Mono_White.png
 sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
+sudo mv Tux_Mono_White.png /usr/share/pixmaps/Linux_White.png
 i realpath
 wget https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.4~136~ubuntu16.04.1_amd64.deb
 sudo dpkg -i conky-manager_2.4~136~ubuntu16.04.1_amd64.deb -y
