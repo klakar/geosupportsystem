@@ -242,8 +242,13 @@ echo "    c. Emmet" >> postinstall.txt
 echo "12.If you installed Games, you might want to look at Software Boutique" >> postinstall.txt
 echo "   for more games, like Minecraft." >> postinstall.txt
 echo "" >> postinstall.txt
+echo "Some installed software is not configured and may not start as it should" >> postinstall.txt
+echo "automatically, for instance the Cairo-Dock. Just add any program you want" >> postinstall.txt
+echo "started to the list of autostarting programs." >> postinstall.txt
 echo "And you should probably restart the computer to be on the safe side" >> postinstall.txt
 echo "This text is saved in your HOME folder" >> postinstall.txt
+echo "" >> postinstall.txt
+echo "If you run into problem, just Goole it!" >> postinstall.txt
 alacarte &
 thunderbird &
 software-properties-gtk --open-tab=4 &
