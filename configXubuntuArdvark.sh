@@ -15,6 +15,7 @@ clear
 echo "During installation you will be asked to type your password and"
 echo "confirm some license agrements for proprietary drivers and tools"
 echo "First, you need to select what extra packages you want to install:"
+echo ""
 echo "Sound and video? Y/n"
 read ljudvideo
 echo "Graphics and photo? Y/n"
@@ -69,6 +70,7 @@ wget https://github.com/klakar/geosupportsystem/raw/master/Tux_Mono_White.png
 sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 sudo mv Tux_Mono_White.png /usr/share/pixmaps/Linux_White.png
 i realpath
+sudo apt -f install
 wget https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.4~136~ubuntu16.04.1_amd64.deb
 sudo dpkg -i conky-manager_2.4~136~ubuntu16.04.1_amd64.deb -y
 
@@ -114,7 +116,7 @@ fi
 if [ "$gisochsant" != "n" ]
 then
 dist=$(lsb_release -c | cut -d':' -f 2 | xargs echo -n)
-if [ "$dist" = "xenial" ]
+if [ "$dist" == "xenial" ]
 then
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
@@ -199,7 +201,7 @@ u
 i sublime-text
 fi
 
-if [ $laptop = "y" ]
+if [ $laptop == "y" ]
 then
 i powertop
 i laptop-mode-tools
@@ -208,7 +210,7 @@ firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
 fi
 
-if [ $mate = "y" ]
+if [ $mate == "y" ]
 then
 i ubuntu-mate-welcome
 fi
@@ -272,7 +274,6 @@ fi
 
 if [ "$dock" != "n" ]
 then
-cp /usr/share/cairo-dock/cairo-dock.desktop ~/.config/autostart/cairo-dock.desktop
 cairo-dock &
 fi
 
