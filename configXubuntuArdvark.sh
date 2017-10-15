@@ -90,7 +90,7 @@ i pavucontrol
 i libdvd-pkgppa:papirus/papirus
 i libaacs0
 i libbluray-bdj
-i libbluray2kodi
+i libbluray2
 mkdir -p ~/.config/aacs/
 cd ~/.config/aacs/ && wget http://vlc-bluray.whoknowsmy.name/files/KEYDB.cfg
 cd ~
@@ -182,9 +182,10 @@ sudo dpkg -i simplenote-1.0.8.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 i virtualbox
 wget "http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb"
-sudo apt-add-repository "deb http://us.archive.ubuntu.com/ubuntu/ xenial main universe" -y
+echo deb http://us.archive.ubuntu.com/ubuntu/ xenial main universe | sudo tee /etc/apt/sources.list.d/temp.list
 u
 i libpng12
+u
 sudo dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
 wget https://download.teamviewer.com/download/teamviewer_i386.deb
 sudo dpkg -i teamviewer_i386.deb
