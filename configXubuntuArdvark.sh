@@ -108,6 +108,7 @@ i synfigstudio
 i blender
 i hugin
 i krita
+i karbon
 fi
 
 if [ "$gisochsant" != "n" ]
@@ -186,6 +187,8 @@ sudo dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
 wget https://download.teamviewer.com/download/teamviewer_i386.deb
 sudo dpkg -i teamviewer_i386.deb
 i nautilus
+i calligraplan
+i calligraflow
 fi
 
 if [ "$sublime" != "n" ]
