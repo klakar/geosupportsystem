@@ -30,9 +30,9 @@ echo "Dropbox and office extras? Y/n"
 read dropboxkontor
 echo "Play on Linux - for: SketchUp, AirPort Tool, etc Y/n"
 read playonlinux
-echo "Laptop tools? y/N"
+echo "Laptop tools? Y/n"
 read laptop
-echo "MATE Software Botique? y/N"
+echo "MATE Software Botique? Y/n"
 read mate
 echo "Sublime Text? Y/n"
 read sublime
@@ -71,6 +71,7 @@ sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 sudo mv Tux_Mono_White.png /usr/share/pixmaps/Linux_White.png
 i realpath
 sudo apt -f install
+i conky
 wget https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.4~136~ubuntu16.04.1_amd64.deb
 sudo dpkg -i conky-manager_2.4~136~ubuntu16.04.1_amd64.deb -y
 
@@ -202,7 +203,7 @@ u
 i sublime-text
 fi
 
-if [ $laptop == "y" ]
+if [ $laptop != "n" ]
 then
 i powertop
 i laptop-mode-tools
@@ -211,7 +212,7 @@ firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
 fi
 
-if [ $mate == "y" ]
+if [ $mate != "n" ]
 then
 i ubuntu-mate-welcome
 fi
