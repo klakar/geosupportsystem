@@ -203,7 +203,7 @@ u
 i sublime-text
 fi
 
-if [ $laptop != "n" ]
+if [ "$laptop" != "n" ]
 then
 i powertop
 i laptop-mode-tools
@@ -212,18 +212,18 @@ firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
 fi
 
-if [ $mate != "n" ]
+if [ "$mate" != "n" ]
 then
 i ubuntu-mate-welcome
 fi
 
-if [ $internet != "n" ]
+if [ "$internet" != "n" ]
 then
 i chromium-browser
 i transmission
 fi
 
-if [ $dock != "n" ]
+if [ "$dock" != "n" ]
 then
 i cairo-dock
 fi
