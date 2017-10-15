@@ -229,12 +229,12 @@ i gufw
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
 echo "Installation is done!" > postinstall.txt
-echo "To do:" >> postinstall.txt
+echo "To do (suggestions):" >> postinstall.txt
 echo "1. Add Lightning calender to Thunderbird" >> postinstall.txt
 echo "   Add Provider for Google Calendar if you have a Google account" >> postinstall.txt
-echo "2. Configure the Dock and add more launcers - if installed" >> postinstall.txt
+echo "2. Configure the Dock, add and remove launcers - if installed" >> postinstall.txt
 echo "3. Fix sound with pavucontol - if needed" >> postinstall.txt
-echo "4. Check for more drivers" >> postinstall.txt
+echo "4. Check for more drivers (try MATE Welcome if installed)" >> postinstall.txt
 echo "5. Configure Dropbox - if installed" >> postinstall.txt
 echo "6. If you installed PlayOnLinux start it to add PC software" >> postinstall.txt
 echo "7. Add even more software from Software Botique - if installed" >> postinstall.txt
@@ -249,7 +249,7 @@ echo "12.If you installed Games, you might want to look at Software Boutique" >>
 echo "   for more games, like Minecraft." >> postinstall.txt
 echo "" >> postinstall.txt
 echo "Some installed software is not configured and may not start as it should" >> postinstall.txt
-echo "automatically, for instance the Cairo-Dock. Just add any program you want" >> postinstall.txt
+echo "automatically. Just add any program you want" >> postinstall.txt
 echo "started to the list of autostarting programs." >> postinstall.txt
 echo "And you should probably restart the computer to be on the safe side" >> postinstall.txt
 echo "This text is saved in your HOME folder" >> postinstall.txt
@@ -272,6 +272,7 @@ fi
 
 if [ "$dock" != "n" ]
 then
+cp /usr/share/cairo-dock/cairo-dock.desktop ~/.config/autostart/cairo-dock.desktop
 cairo-dock &
 fi
 
