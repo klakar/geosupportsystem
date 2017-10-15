@@ -35,9 +35,9 @@ echo "MATE Software Botique? y/N"
 read mate
 echo "Sublime Text? Y/n"
 read sublime
-echo "Internet options (like Chromium)? J/n"
+echo "Internet options (like Chromium)? Y/n"
 read internet
-echo "A nice Dock for your program starters? J/n"
+echo "A nice Dock for your program starters? Y/n"
 read dock
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
@@ -216,6 +216,7 @@ fi
 if [ $internet != "n" ]
 then
 i chromium-browser
+i transmission
 fi
 
 if [ $dock != "n" ]
