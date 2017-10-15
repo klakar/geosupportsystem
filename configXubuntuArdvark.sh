@@ -58,6 +58,7 @@ i sshfs
 i neofetch
 echo "neofetch" >> ~/.bashrc
 i cryptsetup
+i gnome-system-tools
 i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
