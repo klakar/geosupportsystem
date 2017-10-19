@@ -12,6 +12,12 @@ u () {
 clear
 
 # Välj paket
+dist=$(lsb_release -c | cut -d':' -f 2 | xargs echo -n)
+if [ "$dist" = "artful" ]
+then
+echo "Vill du ha klassiska Gnome? J/n"
+read classic
+fi
 echo "Ljud och video? J/n"
 read ljudvideo
 echo "Grafik och foto? J/n"
@@ -32,6 +38,8 @@ echo "MATE Software Botique? j/N"
 read mate
 echo "Sublime Text? J/n"
 read sublime
+
+
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -57,6 +65,13 @@ i tracker-gui
 i gparted
 # Fixa så att Qt applikationer följer GTK+ tema
 echo "QT_STYLE_OVERRIDE=GTK+" | sudo tee -a /etc/environment
+i cowsay
+
+if [ "$classic" != "n" ]
+then
+i gnome-session
+i vanilla-gnome-desktop
+fi
 
 if [ "$ljudvideo" != "n" ]
 then
@@ -178,7 +193,7 @@ u
 i sublime-text
 fi
 
-if [ $laptop = "j" ]
+if [ "$laptop" == "j" ]
 then
 i powertop
 i laptop-mode-tools
@@ -187,7 +202,7 @@ firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
 fi
 
-if [ $mate = "y" ]
+if [ "$mate" == "j" ]
 then
 i ubuntu-mate-welcome
 fi
@@ -195,6 +210,13 @@ fi
 sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 clear
 echo "Installationen är klar!" > postinstall.txt
+if [ "$classic" "= #n" ]
+then
+echo "Starta om för att byta till Klassisk Gnome vid inloggningen." >> postinstall.txt
+echo "Detta krävs för att kunna göra en del förändringar i gränssnittet." >> postinstall.txt
+else
+echo "Ubuntu varianten av Gnome kan inte hantera alla justeringar nedan." >> postinstall.txt
+fi
 echo "Att göra:" >> postinstall.txt
 echo "1. Lägg till Lightning kalendern i Thunderbird" >> postinstall.txt
 echo "   Lägg till Provider for Google Calendar om du har Google konto" >> postinstall.txt
@@ -233,4 +255,4 @@ playonlinux &
 fi
 
 clear
-echo "Nu kan du stänga detta fönster"
+cowsay -f tux "Nu kan du stänga detta fönster"
