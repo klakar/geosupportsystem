@@ -63,6 +63,7 @@ i libavcodec-extra
 i alacarte
 i tracker-gui
 i gparted
+i papirus-icon-theme
 # Fixa så att Qt applikationer följer GTK+ tema
 echo "QT_STYLE_OVERRIDE=GTK+" | sudo tee -a /etc/environment
 i cowsay
