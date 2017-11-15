@@ -259,6 +259,9 @@ echo "started to the list of autostarting programs." >> postinstall.txt
 echo "And you should probably restart the computer to be on the safe side" >> postinstall.txt
 echo "This text is saved in your HOME folder" >> postinstall.txt
 echo "" >> postinstall.txt
+echo "Screen tearing? Nvidia?" >> postinstall.txt
+echo "Try: nvidia-settings --assign CurrentMetaMode=\"nvidia-auto-select +0+0 { ForceCompositionPipeline = On }\"" >> postinstall.txt
+echo "" >> postinstall.txt
 echo "If you run into problem, just Goole it!" >> postinstall.txt
 alacarte &
 thunderbird &
