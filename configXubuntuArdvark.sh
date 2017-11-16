@@ -261,6 +261,7 @@ echo "This text is saved in your HOME folder" >> postinstall.txt
 echo "" >> postinstall.txt
 echo "Screen tearing? Nvidia?" >> postinstall.txt
 echo "Try: nvidia-settings --assign CurrentMetaMode=\"nvidia-auto-select +0+0 { ForceCompositionPipeline = On }\"" >> postinstall.txt
+echo "Add the command to .profile to run on every login."
 echo "" >> postinstall.txt
 echo "If you run into problem, just Goole it!" >> postinstall.txt
 alacarte &
