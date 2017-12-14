@@ -105,6 +105,8 @@ fi
 
 if [ "$grafikfoto" != "n" ]
 then
+sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
+u
 i gimp
 i darktable
 i inkscape
