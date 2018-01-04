@@ -213,6 +213,8 @@ i laptop-mode-tools
 sudo powertop --auto-tune --html
 firefox powertop.html &
 sudo update-rc.d laptop-mode defaults
+i pulseaudio-module-bluetooth
+pactl load-module module-bluetooth-discover #should run on every startup
 fi
 
 if [ "$mate" != "n" ]
@@ -264,6 +266,8 @@ echo "" >> postinstall.txt
 echo "Screen tearing? Nvidia?" >> postinstall.txt
 echo "Try: nvidia-settings --assign CurrentMetaMode=\"nvidia-auto-select +0+0 { ForceCompositionPipeline = On }\"" >> postinstall.txt
 echo "Add the command to .profile to run on every login."
+echo "On a Laptop and having Blutooth issues?" >> postinstall.txt
+echo "Add \"pactl load-module module-bluetooth-discover\" to your startup." >> postinstall.txt
 echo "" >> postinstall.txt
 echo "If you run into problem, just Goole it!" >> postinstall.txt
 alacarte &
