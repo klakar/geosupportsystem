@@ -66,6 +66,8 @@ i alacarte
 i gparted
 i papirus-icon-theme
 i cowsay
+i qt4-qtconfig
+sudo echo "style=GTK+" >> /etc/xdg/Trolltech.conf
 wget https://github.com/klakar/geosupportsystem/raw/master/Systems-Linux-icon.png
 wget https://github.com/klakar/geosupportsystem/raw/master/Tux_Mono_White.png
 sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
