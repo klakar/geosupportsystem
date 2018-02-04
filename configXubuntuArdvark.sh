@@ -40,6 +40,8 @@ echo "Internet options (like Chromium)? Y/n"
 read internet
 echo "A nice Dock for your program starters? Y/n"
 read dock
+echo "Software Defined Radio? Y/n"
+read sdr
 
 sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
@@ -233,6 +235,30 @@ fi
 if [ "$dock" != "n" ]
 then
 i cairo-dock
+fi
+
+if [ "$sdr" != "n" ]
+then
+i cmake
+i libusb-1.0-0-dev
+git clone git://git.osmocom.org/rtl-sdr.git
+cd rtl-sdr/
+mkdir build
+cd build
+cmake ../ -DINSTALL_UDEV_RULES=ON
+make
+sudo make install
+sudo ldconfig
+sudo cp ../rtl-sdr.rules /etc/udev/rules.d/
+echo "blacklist dvb_usb_rtl28xxu" | sudo tee /etc/modprobe.d/blacklist-rtl.conf
+sudo add-apt-repository -y ppa:bladerf/bladerf
+sudo add-apt-repository -y ppa:ettusresearch/uhd
+sudo add-apt-repository -y ppa:myriadrf/drivers
+sudo add-apt-repository -y ppa:myriadrf/gnuradio
+sudo add-apt-repository -y ppa:gqrx/gqrx-sdr
+u
+i gqrx-sdr
+volk_profile
 fi
 
 i gufw
