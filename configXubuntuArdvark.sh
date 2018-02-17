@@ -110,6 +110,7 @@ fi
 if [ "$grafikfoto" != "n" ]
 then
 sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
+sudo add-apt-repository -y ppa:nomacs/stable
 u
 i gimp
 i darktable
@@ -119,6 +120,7 @@ i blender
 i hugin
 i krita
 i karbon
+i nomacs
 fi
 
 if [ "$gisochsant" != "n" ]
