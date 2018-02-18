@@ -187,8 +187,8 @@ fi
 
 if [ "$dropboxkontor" != "n" ]
 then
-wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb"
-sudo dpkg -i simplenote-1.0.8.deb
+wget "https://github.com/Automattic/simplenote-electron/releases/download/v1.1.3/Simplenote-linux-1.1.3.deb"
+sudo dpkg -i Simplenote-linux-1.1.3.deb
 wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 i virtualbox
 wget "http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb"
