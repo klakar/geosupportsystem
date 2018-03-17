@@ -34,8 +34,8 @@ echo "Laptop tools? Y/n"
 read laptop
 echo "MATE Software Botique? Y/n"
 read mate
-echo "Sublime Text? Y/n"
-read sublime
+echo "Atom Editor? Y/n"
+read atom
 echo "Internet options (like Chromium)? Y/n"
 read internet
 echo "A nice Dock for your program starters? Y/n"
@@ -204,12 +204,10 @@ i calligraplan
 i calligraflow
 fi
 
-if [ "$sublime" != "n" ]
+if [ "$atom" != "n" ]
 then
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-u
-i sublime-text
+wget https://atom-installer.github.com/v1.25.0/atom-amd64.deb
+sudo dpkg -i atom-amd64.deb
 fi
 
 if [ "$laptop" != "n" ]
