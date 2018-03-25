@@ -111,6 +111,8 @@ if [ "$grafikfoto" != "n" ]
 then
 sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
 sudo add-apt-repository -y ppa:nomacs/stable
+sudo add-apt-repository -y ppa:kritalime/ppa
+sudo add-apt-repository -y ppa:inkscape.dev/stable
 u
 i gimp
 i darktable
