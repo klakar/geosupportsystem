@@ -92,7 +92,7 @@ i virtualbox
 wget "http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb"
 echo deb http://us.archive.ubuntu.com/ubuntu/ xenial main universe | sudo tee /etc/apt/sources.list.d/temp.list
 u
-i libpng12
+i libpng12-0
 u
 sudo dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
 wget https://download.teamviewer.com/download/teamviewer_i386.deb
