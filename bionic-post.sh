@@ -21,7 +21,6 @@ i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
 i gparted
-i papirus-icon-theme
 i cowsay
 i qt4-qtconfig
 sudo echo "style=GTK+" >> /etc/xdg/Trolltech.conf
@@ -31,7 +30,6 @@ sudo mv Systems-Linux-icon.png /usr/share/pixmaps/Linux.png
 sudo mv Tux_Mono_White.png /usr/share/pixmaps/Linux_White.png
 sudo apt -f install
 
-i breeze-icon-theme
 i obs-studio
 i kdenlive
 i kazam
@@ -106,4 +104,4 @@ sudo apt -f install -y -qq && sudo apt dist-upgrade -y -qq
 software-properties-gtk --open-tab=4 &
 
 clear
-cowsay -f tux "Everything finished! Now you can close this window. Don't forget to support Open Source."
+cowsay -f tux "Everything finished! Now you can close this window. Don't forget to support Open Source. Try installing some icon themes, like Papirus and Breeze."
