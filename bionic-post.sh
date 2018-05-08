@@ -11,6 +11,7 @@ clear
 
 sudo add-apt-repository ppa:webupd8team/java -y
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
+sudo add-apt-repository ppa:gnumdk/lollypop -y
 u
 
 i sshfs
@@ -35,6 +36,7 @@ i kdenlive
 i kazam
 i vlc
 i audacity
+i lollypop
 i kodi
 i guvcview
 i enblend
