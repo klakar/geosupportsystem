@@ -61,6 +61,8 @@ i neofetch
 echo "neofetch" >> ~/.bashrc
 i cryptsetup
 i gnome-system-tools
+i seahorse
+i seahorse-nautilus
 i htop
 i ubuntu-restricted-extras
 i libavcodec-extra
