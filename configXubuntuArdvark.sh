@@ -118,6 +118,7 @@ sudo add-apt-repository -y ppa:inkscape.dev/stable
 u
 i gimp
 i darktable
+i rapid-photo-downloader
 i inkscape
 i synfigstudio
 i blender
