@@ -1,0 +1,22 @@
+-- UTM broken grids Custom grid labels expression
+-- Original created by Klas Karlsson and formatted for the current UTM map CRS
+-- Change all "@map_crs" to "'EPSG:32633'" or equivalent for grids in crs other than the map frame. I.E. for angled grids
+-- Also (optionally) modify for labels in the lower part of the map to cover missing labels (require additional grids)
+-- For every UTM boundary in the map, you need two (optionally four) grids
+-- For QGIS before 3.10 replace "@map_extent" with "map_get(item_variables('main_map'), 'map_extent')" (need to set the "Element ID" to 'main_map' for the map element)
+
+if( -- Testing if the grid_number is within the current UTM zone
+	-- Condition where a point is created on the x axis, transformed and compared with the UTM boundry longitude value (left and right)
+	(x(transform(
+	make_point(@grid_number, y_max(@map_extent)), -- Change y_max to y_min for lower horizontal axis
+	@map_crs, 'EPSG:4326')) < (right(@map_crs,2)*6)-180 and x(transform(
+	make_point(@grid_number, y_max(@map_extent)), -- Change y_max to y_min for lower horizontal axis
+	@map_crs, 'EPSG:4326')) > (right(@map_crs,2)*6)-186)
+	-- Also, don't filter out any @grid_numbers on the vertical axis
+	or @grid_axis = 'y', 
+	
+	-- Return results:
+	left(right(@grid_number,5),2) -- This is returned if it is in the current UTM zone
+	,
+	''  -- This is returned if it's not
+)
