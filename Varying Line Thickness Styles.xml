@@ -1,0 +1,208 @@
+<!DOCTYPE qgis_style>
+<qgis_style version="2">
+  <symbols>
+    <symbol force_rhr="0" name="Variable_Line_Thickness_Generated_Points" alpha="1" clip_to_extent="1" type="fill">
+      <layer pass="0" locked="0" enabled="1" class="SimpleFill">
+        <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+        <prop v="255,234,91,255" k="color"/>
+        <prop v="bevel" k="joinstyle"/>
+        <prop v="0,0" k="offset"/>
+        <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+        <prop v="MM" k="offset_unit"/>
+        <prop v="35,35,35,255" k="outline_color"/>
+        <prop v="no" k="outline_style"/>
+        <prop v="0.26" k="outline_width"/>
+        <prop v="MM" k="outline_width_unit"/>
+        <prop v="solid" k="style"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+      </layer>
+      <layer pass="0" locked="0" enabled="1" class="RandomMarkerFill">
+        <prop v="1" k="clip_points"/>
+        <prop v="1" k="count_method"/>
+        <prop v="250" k="density_area"/>
+        <prop v="MM" k="density_area_unit"/>
+        <prop v="3x:0,0,0,0,0,0" k="density_area_unit_scale"/>
+        <prop v="10" k="point_count"/>
+        <prop v="242428201" k="seed"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+        <symbol force_rhr="0" name="@Variable_Line_Thickness_Generated_Points@1" alpha="1" clip_to_extent="1" type="marker">
+          <layer pass="0" locked="0" enabled="1" class="SimpleMarker">
+            <prop v="0" k="angle"/>
+            <prop v="255,241,127,255" k="color"/>
+            <prop v="1" k="horizontal_anchor_point"/>
+            <prop v="bevel" k="joinstyle"/>
+            <prop v="circle" k="name"/>
+            <prop v="0,0" k="offset"/>
+            <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+            <prop v="MM" k="offset_unit"/>
+            <prop v="35,35,35,255" k="outline_color"/>
+            <prop v="no" k="outline_style"/>
+            <prop v="0" k="outline_width"/>
+            <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+            <prop v="MM" k="outline_width_unit"/>
+            <prop v="diameter" k="scale_method"/>
+            <prop v="3.8" k="size"/>
+            <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+            <prop v="MM" k="size_unit"/>
+            <prop v="1" k="vertical_anchor_point"/>
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+          </layer>
+        </symbol>
+      </layer>
+      <layer pass="1" locked="0" enabled="1" class="GeometryGenerator">
+        <prop v="Fill" k="SymbolType"/>
+        <prop v="-- Generating new vertex points at intervall 100 projected units&#xa;-- Style best suited for objects less than about 10 k (CRS units)&#xa;smooth(&#xa;buffer_by_m(&#xa;geom_from_wkt('LINESTRING M ('||&#xa;array_to_string(&#xa;array_foreach(&#xa; generate_series(1,$perimeter/100,1),&#xa; to_int(x(line_interpolate_point( $geometry, @element*100)))&#xa; || ' '&#xa; || to_int(y(line_interpolate_point( $geometry, @element*100)))&#xa; || ' '&#xa; || ( scale_linear( distance(line_interpolate_point( $geometry, @element*100),&#xa; pole_of_inaccessibility($geometry,3))&#xa; ,0,5000,200,50))&#xa; )&#xa;,', ')&#xa;||')')&#xa;)&#xa;,7)" k="geometryModifier"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+        <symbol force_rhr="0" name="@Variable_Line_Thickness_Generated_Points@2" alpha="1" clip_to_extent="1" type="fill">
+          <layer pass="0" locked="0" enabled="1" class="SimpleFill">
+            <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+            <prop v="0,0,0,255" k="color"/>
+            <prop v="bevel" k="joinstyle"/>
+            <prop v="0,0" k="offset"/>
+            <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+            <prop v="MM" k="offset_unit"/>
+            <prop v="35,35,35,255" k="outline_color"/>
+            <prop v="no" k="outline_style"/>
+            <prop v="0.26" k="outline_width"/>
+            <prop v="MM" k="outline_width_unit"/>
+            <prop v="solid" k="style"/>
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+          </layer>
+        </symbol>
+      </layer>
+    </symbol>
+    <symbol force_rhr="0" name="Variable_Line_Thickness_Vertex_Points" alpha="1" clip_to_extent="1" type="fill">
+      <layer pass="0" locked="0" enabled="1" class="SimpleFill">
+        <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+        <prop v="255,234,91,255" k="color"/>
+        <prop v="bevel" k="joinstyle"/>
+        <prop v="0,0" k="offset"/>
+        <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+        <prop v="MM" k="offset_unit"/>
+        <prop v="35,35,35,255" k="outline_color"/>
+        <prop v="no" k="outline_style"/>
+        <prop v="0.26" k="outline_width"/>
+        <prop v="MM" k="outline_width_unit"/>
+        <prop v="solid" k="style"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+      </layer>
+      <layer pass="0" locked="0" enabled="1" class="RandomMarkerFill">
+        <prop v="1" k="clip_points"/>
+        <prop v="1" k="count_method"/>
+        <prop v="250" k="density_area"/>
+        <prop v="MM" k="density_area_unit"/>
+        <prop v="3x:0,0,0,0,0,0" k="density_area_unit_scale"/>
+        <prop v="10" k="point_count"/>
+        <prop v="242428201" k="seed"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+        <symbol force_rhr="0" name="@Variable_Line_Thickness_Vertex_Points@1" alpha="1" clip_to_extent="1" type="marker">
+          <layer pass="0" locked="0" enabled="1" class="SimpleMarker">
+            <prop v="0" k="angle"/>
+            <prop v="255,241,127,255" k="color"/>
+            <prop v="1" k="horizontal_anchor_point"/>
+            <prop v="bevel" k="joinstyle"/>
+            <prop v="circle" k="name"/>
+            <prop v="0,0" k="offset"/>
+            <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+            <prop v="MM" k="offset_unit"/>
+            <prop v="35,35,35,255" k="outline_color"/>
+            <prop v="no" k="outline_style"/>
+            <prop v="0" k="outline_width"/>
+            <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+            <prop v="MM" k="outline_width_unit"/>
+            <prop v="diameter" k="scale_method"/>
+            <prop v="3.8" k="size"/>
+            <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+            <prop v="MM" k="size_unit"/>
+            <prop v="1" k="vertical_anchor_point"/>
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+          </layer>
+        </symbol>
+      </layer>
+      <layer pass="1" locked="0" enabled="1" class="GeometryGenerator">
+        <prop v="Fill" k="SymbolType"/>
+        <prop v="-- Using vertex points to generate lines. Not as smooth but faster.&#xa;smooth(&#xa;buffer_by_m(&#xa;geom_from_wkt('LINESTRING M ('||&#xa;array_to_string(&#xa;array_foreach(&#xa; generate_series(1, num_points( $geometry)),&#xa; to_int(x( point_n($geometry, @element) ))&#xa; || ' '&#xa; || to_int(y(point_n($geometry, @element)))&#xa; || ' '&#xa; || ( scale_linear( distance(point_n($geometry, @element),&#xa; pole_of_inaccessibility($geometry,3))&#xa; ,0,5000,200,50))&#xa;)&#xa;,', ')&#xa;||')')&#xa;)&#xa;,2)" k="geometryModifier"/>
+        <data_defined_properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data_defined_properties>
+        <symbol force_rhr="0" name="@Variable_Line_Thickness_Vertex_Points@2" alpha="1" clip_to_extent="1" type="fill">
+          <layer pass="0" locked="0" enabled="1" class="SimpleFill">
+            <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+            <prop v="0,0,0,255" k="color"/>
+            <prop v="bevel" k="joinstyle"/>
+            <prop v="0,0" k="offset"/>
+            <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+            <prop v="MM" k="offset_unit"/>
+            <prop v="35,35,35,255" k="outline_color"/>
+            <prop v="no" k="outline_style"/>
+            <prop v="0.26" k="outline_width"/>
+            <prop v="MM" k="outline_width_unit"/>
+            <prop v="solid" k="style"/>
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+          </layer>
+        </symbol>
+      </layer>
+    </symbol>
+  </symbols>
+  <colorramps/>
+  <textformats/>
+  <labelsettings/>
+</qgis_style>
