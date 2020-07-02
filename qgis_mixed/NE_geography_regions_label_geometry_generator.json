@@ -1,0 +1,14 @@
+{
+    "author": "Klas Karlsson",
+    "exported_at": "2020-07-02T12:39:40",
+    "expressions": [
+        {
+            "description": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Noto Sans UI'; font-size:11pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Used with NaturalEarthData.com &quot;Geography Regions Polygon&quot; to create curved labels that follow latitude lines.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Change expression in &quot;project()&quot; functions to make line longer or shorter, to suit your label style.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Best viewed in stereographic or orthographic projections.</p></body></html>",
+            "expression": "smooth( -- This creates the smooth curve\n make_line( -- Make line with three points in east-west direction\n  -- The line length is calculated from the length of the label string\n  project( centroid($geometry),length(  \"name_sv\" )/(\"scalerank\"/3+3),1.5*pi()),\n  centroid($geometry), -- The line is centered around the polygon centroid\n  project( centroid($geometry),length(  \"name_sv\" )/(\"scalerank\"/3+3),0.5*pi())\n )\n,5)",
+            "group": "user",
+            "name": "Curve labels along parallels",
+            "type": "expression"
+        }
+    ],
+    "qgis_version": "3.14.0-Pi"
+}
