@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Run on Ubuntu 20.04 Server
+
 sudo add-apt-repository ppa:ubuntugis/ppa
 sudo apt update -y
 
@@ -28,3 +32,10 @@ git clone https://github.com/GeoNode/geonode-project.git -b 4.x
 # Ubuntu
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 mkvirtualenv --python=/usr/bin/python3 my_geonode
+
+pip install Django==3.2.13
+
+django-admin startproject --template=./geonode-project -e py,sh,md,rst,json,yml,ini,env,sample,properties -n monitoring-cron -n Dockerfile my_geonode
+
+cd my_geonode
+./docker-build.sh
