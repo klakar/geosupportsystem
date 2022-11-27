@@ -38,7 +38,7 @@ potree
 
 ### Generate Entwine pointclouds
 
-The easiest way is to install and open the pointclouds in QGIS. You __must__ use version 3.22 of QGIS since more recent versions do not convert pointclouds to Entwine as standard. The included _untwine_ program in more recent QGIS versions can, but use too modern LAZ-standard for Potree to use (1.2 or older).
+The easiest way is to install and open the pointclouds in QGIS. You __must__ use version 3.22 of QGIS since more recent versions do not convert pointclouds to Entwine as standard. The included _untwine_ program in more recent QGIS versions can, but use too modern LAZ-standard for Potree to use (requires 1.2 or older).
 Until Potree 2 is released you will need QGIS 3.22 for conversion.
 
 ___Support Potree___
