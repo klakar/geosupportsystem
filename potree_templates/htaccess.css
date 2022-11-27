@@ -1,0 +1,40 @@
+body {
+    background: #eee;
+    margin: 33px;
+    color: #333;
+    }
+h1 {
+    font: 2.0em Georgia, sans;
+    }
+h1 a:hover, h1 a:active {
+    text-decoration: none;
+    }
+a:link {
+    text-decoration: none;
+    color: #555;
+    }
+a:visited {
+    text-decoration: none;
+    color: #777;
+    }
+a:hover, a:active {
+    text-decoration: underline;
+    color: maroon;
+    }
+pre {
+    text-transform: capitalize;
+    font: 0.9em/1.3em "Courier New", Courier;
+    margin: 3px 0;
+    color: #777;
+    }
+pre img {
+    display: inline;
+    }
+p {
+    font: 0.9em/1.3em "Courier New", Courier;
+    margin: 3px 0;
+    color: #777;
+    }
+img {
+    margin: 3px 0;
+    }
