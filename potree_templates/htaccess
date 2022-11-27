@@ -1,0 +1,9 @@
+Options +Indexes +FollowSymLinks
+IndexIgnore *.* resources mallar
+IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble IconHeight=30 IconWidth=50 IconsAreLinks
+IndexOrderDefault Descending Date
+HeaderName /potree/resources/header.html
+ReadmeName /potree/resources/footer.html
+RewriteBase /
+RewriteOptions InheritDown
+AddIcon /potree/resources/icons/cloudfolder.png ^^DIRECTORY^^
