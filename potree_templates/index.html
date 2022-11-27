@@ -70,9 +70,9 @@
 		function copyText(type) {
 			var command = "";
 			if (type=="LAZ")  {
-				command = "pdal translate " + window.location.href + "ept.json " + window.location.pathname.split("/").filter(n => n).pop() + ".laz";
+				command = "pdal translate " + window.location.href.replace("https","http") + "ept.json " + window.location.pathname.split("/").filter(n => n).pop() + ".laz";
 			} else if (type=="DEM")  {
-				command = "pdal translate " + window.location.href + "ept.json " + window.location.pathname.split("/").filter(n => n).pop() + "_DEM.tif --writers.gdal.resolution=0.1";
+				command = "pdal translate " + window.location.href.replace("https","http") + "ept.json " + window.location.pathname.split("/").filter(n => n).pop() + "_DEM.tif --writers.gdal.resolution=0.1";
 			} else if (type=="EPT")  {
 				command = window.location.href + "ept.json";
 			} else if (type=="META")  {
