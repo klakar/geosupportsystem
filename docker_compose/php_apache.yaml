@@ -1,0 +1,10 @@
+version: ':latest'
+services:
+
+  phpsite:
+    image: php:apache
+    command: php -S 0.0.0.0:80
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/Pool/webserver:/var/www/html
