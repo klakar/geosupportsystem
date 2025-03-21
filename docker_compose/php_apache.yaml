@@ -1,14 +1,6 @@
 version: ':latest'
 services:
 
-  phpsite:
-    image: php:apache
-    command: php -S 0.0.0.0:80
-    ports:
-      - "8080:80"
-    volumes:
-      - /mnt/Pool/webserver:/var/www/html
-  
   nodejs:
     image: node:alpine
     environment: 
@@ -16,7 +8,17 @@ services:
     working_dir: /home/app
     restart: always
     volumes:
-      - /mnt/Pool/webserver:/var/www/html
+      - /mnt/Pool/nodejs:/home/app
     depends_on:
-      - php
+      - phpsite
     command: ["node", "index"]
+  
+  phpsite:
+    image: php:apache
+    command: php -S 0.0.0.0:80
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/Pool/webserver:/var/www/html
+
+
