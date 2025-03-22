@@ -8,10 +8,10 @@ services:
     working_dir: /home/app
     restart: always
     volumes:
-      - /mnt/Pool/nodejs:/home/app
+      - /mnt/Pool/webserver:/home/app
     depends_on:
       - phpsite
-    command: ["node", "index"]
+    command: npm start
   
   phpsite:
     image: php:apache
