@@ -11,7 +11,7 @@ services:
       - /mnt/Pool/webserver:/home/app
     depends_on:
       - phpsite
-    command: npm start
+    command: "npm start"
   
   phpsite:
     image: php:apache
