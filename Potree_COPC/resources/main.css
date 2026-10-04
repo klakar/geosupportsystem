@@ -1,0 +1,29 @@
+body {
+	font-family: Arial;
+	background-color: rgb(179, 169, 158);
+}
+H1 {
+	font-stretch: condensed;
+	text-transform: uppercase;
+	letter-spacing: 3pt;
+}
+H3 {
+	line-height: 1pt;
+	letter-spacing: 2pt;
+}
+a {
+	text-decoration: none;
+	color:darkslategrey;
+	font-weight: bold;
+}
+.beskrivning {
+	font-style: italic;
+}
+p {
+	background-color: rgb(232, 237, 229);
+	padding: 5px;
+}
+ol li {
+	margin: 0px;
+	padding: 0px;
+}
