@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Potree Viewer</title>
+	<link rel="icon" type="image/x-icon" href="./resources/icons/laz_logo.png">
+	<link rel="stylesheet" type="text/css" href="./resources/build/potree/potree.css">
+	<link rel="stylesheet" type="text/css" href="./resources/libs/jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="./resources/libs/openlayers3/ol.css">
+	<link rel="stylesheet" type="text/css" href="./resources/libs/spectrum/spectrum.css">
+	<link rel="stylesheet" type="text/css" href="./resources/libs/jstree/themes/mixed/style.css">
+
+	<!--Additional style settings for the viewer-->
+	<style>
+		#logo_br {
+			max-height: 120px;
+			position: absolute;
+			right: 15px;
+			bottom: 10px;
+			z-index: 99999;
+			filter: drop-shadow(3px 3px 4px #0007);
+		}
+		button {
+			border: none;
+			border-radius: 4px;
+			color: white;
+			padding: 5px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 12px;
+			cursor: pointer;
+			transition-duration: 0.4s;
+		}
+		button:hover {
+			background-color: white;
+			color: black;
+		}
+		.backbutton {
+			background-color: rgb(45, 137, 160);
+		}
+		.normalbutton {
+			background-color: #4CAF50;
+		}
+		.pc_title {
+			font-family: Arial;
+			font-size: 24pt;
+			color: #bbb;
+		}
+
+		/* Drag-and-drop */
+		#drop_hint {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 99998;
+			padding: 32px 40px;
+			border: 2px dashed #888;
+			border-radius: 12px;
+			background: #000a;
+			color: #ddd;
+			font-family: Arial;
+			text-align: center;
+			max-width: 80%;
+		}
+		#drop_hint .big { font-size: 20pt; margin-bottom: 8px; }
+		#drop_hint .small { font-size: 11pt; color: #aaa; margin-bottom: 14px; }
+		#drop_hint #drop_msg { color: #ff9a9a; margin-top: 12px; min-height: 1em; font-size: 11pt; }
+		#drop_overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 100000;
+			background: #2d89a066;
+			border: 4px dashed #fff;
+			box-sizing: border-box;
+			pointer-events: none;
+			color: white;
+			font-family: Arial;
+			font-size: 28pt;
+			align-items: center;
+			justify-content: center;
+			text-shadow: 2px 2px 6px #000;
+		}
+		#drop_overlay.active { display: flex; }
+	</style>
+</head>
+
+<body>
+	<script src="./resources/libs/jquery/jquery-3.1.1.min.js"></script>
+	<script src="./resources/libs/spectrum/spectrum.js"></script>
+	<script src="./resources/libs/jquery-ui/jquery-ui.min.js"></script>
+	<script src="./resources/libs/other/BinaryHeap.js"></script>
+	<script src="./resources/libs/tween/tween.min.js"></script>
+	<script src="./resources/libs/d3/d3.js"></script>
+	<script src="./resources/libs/proj4/proj4.js"></script>
+	<script src="./resources/libs/openlayers3/ol.js"></script>
+	<script src="./resources/libs/i18next/i18next.js"></script>
+	<script src="./resources/libs/jstree/jstree.js"></script>
+	<script src="./resources/libs/copc/index.js"></script>
+	<script src="./resources/build/potree/potree.js"></script>
+	<script src="./resources/libs/plasio/js/laslaz.js"></script>
+
+	<div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; ">
+		<div id="potree_render_area" style="background-image: url('./resources/icons/logo_bg.png');"></div>
+		<div id="potree_sidebar_container"> </div>
+	</div>
+
+	<!-- Visas när inget punktmoln är inläst -->
+	<div id="drop_hint">
+		<div class="big">Släpp en .copc.laz-fil här</div>
+		<div class="small">Filen läses lokalt i webbläsaren och laddas inte upp någonstans.</div>
+		<button class="normalbutton" id="pick_file">Välj fil...</button>
+		<input type="file" id="file_input" accept=".laz,.copc.laz" style="display:none">
+		<div id="drop_msg"></div>
+	</div>
+
+	<!-- Visas medan en fil dras över fönstret -->
+	<div id="drop_overlay">Släpp filen för att läsa in den</div>
+
+	<script>
+		// Globala variabler som copyText() använder (sätts i modulskriptet nedan)
+		window.pcPath = "/PC/share/";
+		window.pcUrl = [];
+
+		function copyText(type) {
+			var command = "";
+			if (type == "URL") {
+				command = "https://" + window.location.hostname + window.pcPath + window.pcUrl;
+				navigator.clipboard.writeText(command);
+				alert("Kopierat till urklipp:\n\n" + command);
+			} else if (type == "LAZ") {
+				command = "https://" + window.location.hostname + window.pcPath + window.pcUrl;
+				window.location = command;
+			}
+		}
+	</script>
+
+	<script type="module">
+
+	import * as THREE from "./resources/libs/three.js/build/three.module.js";
+
+	async function main() {
+		const urlParams = new URLSearchParams(window.location.search);
+		const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
+			{ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+		));
+
+		let pcName = "";
+		let pcMeta = "";
+		let pcUrl = [];
+		let currentBlobUrl = null;
+		let hasCloud = false;
+
+		// ---- Läge 1: ?pc=namn  (som tidigare, men nu väntar vi på .conf) ----
+		const configMode = urlParams.has("pc");
+		if (configMode) {
+			try {
+				const res = await fetch("./" + urlParams.get("pc") + ".conf");
+				if (!res.ok) throw new Error("HTTP " + res.status);
+				const data = await res.json();
+				pcName = data.name;
+				pcMeta = data.meta;
+				pcUrl = data.file;
+				window.pcUrl = pcUrl;
+				window.pcPath = "/PC/share/";
+			} catch (err) {
+				console.error("Kunde inte läsa .conf:", err);
+				window.location.href = "no_pc.html";
+				return;
+			}
+		}
+
+		// ---- Viewer ----
+		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
+		viewer.setEDLEnabled(true);
+		viewer.setFOV(60);
+		viewer.setPointBudget(2_000_000);
+		viewer.loadSettingsFromURL();
+		viewer.useHQ = false;
+
+		function setTitle(html) {
+			viewer.setDescription(html);
+		}
+
+		if (configMode) {
+			setTitle(
+				"<button class=backbutton onclick=\"history.back()\">Tillbaka</button> " +
+				"<button class=normalbutton onclick=copyText(\"URL\")>Kopiera Url</button> " +
+				"<button class=normalbutton onclick=copyText(\"LAZ\")>Hämta Data</button><br>" +
+				"<div class=\"pc_title\">" + esc(pcName) + "</div>"
+			);
+		} else {
+			setTitle("");
+		}
+
+		// Metadata-sektionen i sidopanelen. Innehållet kan bytas efteråt (setMeta).
+		let metaHtml = configMode ? pcMeta : "";
+		function setMeta(html) {
+			metaHtml = html;
+			$("#meta_content").html(html);
+		}
+
+		viewer.loadGUI(() => {
+			viewer.setLanguage("en");
+			$("#menu_appearance").next().show();
+
+			let section = $(`
+				<h3 id="menu_meta" class="accordion-header ui-widget"><span>Metadata</span></h3>
+				<div class="accordion-content ui-widget pv-menu-list"></div>
+			`);
+			let content = section.last();
+			content.html(`<div class="pv-menu-list" id="meta_content">` + metaHtml + `</div>`);
+			section.first().click(() => content.slideToggle());
+			section.insertBefore($("#menu_about"));
+		});
+
+		// ---- Gemensam inläsning ----
+		function loadCloud(path, name) {
+			Potree.loadPointCloud(path, name, function (e) {
+				viewer.scene.addPointCloud(e.pointcloud);
+
+				let material = e.pointcloud.material;
+				material.size = 0.7;
+				material.minSize = 1;
+				material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+				viewer.fitToScreen(0.5);
+				hasCloud = true;
+				$("#drop_hint").hide();
+			});
+		}
+
+		function clearClouds() {
+			for (const pc of [...viewer.scene.pointclouds]) {
+				viewer.scene.scenePointCloud.remove(pc);
+			}
+			viewer.scene.pointclouds.length = 0;
+			if (currentBlobUrl) {
+				URL.revokeObjectURL(currentBlobUrl);
+				currentBlobUrl = null;
+			}
+			hasCloud = false;
+		}
+
+		// ---- Läge 1: läs in från server ----
+		if (configMode) {
+			$("#drop_hint").hide();
+			for (let dataset in pcUrl) {
+				loadCloud("share/" + pcUrl[dataset], pcName);
+			}
+		}
+
+		// ---- Läge 2: drag-and-drop ----
+		function showMsg(text) {
+			$("#drop_hint").show();
+			$("#drop_msg").text(text);
+		}
+
+		function handleFile(file) {
+			if (!/\.copc\.laz$/i.test(file.name)) {
+				showMsg("\"" + file.name + "\" är inte en .copc.laz-fil.");
+				return;
+			}
+			$("#drop_msg").text("");
+			clearClouds();
+
+			// Blob-URL med filnamnet som fragment, så att inläsaren
+			// fortfarande ser ".copc.laz" i adressen. Fragmentet skickas
+			// aldrig vid själva hämtningen.
+			currentBlobUrl = URL.createObjectURL(file);
+			const path = currentBlobUrl + "#/" + encodeURIComponent(file.name);
+
+			const mb = (file.size / (1024 * 1024)).toFixed(1);
+			setTitle("<div class=\"pc_title\">" + esc(file.name) + "</div>");
+			setMeta(
+				"<ul>" +
+				"<li>Filnamn: " + esc(file.name) + "</li>" +
+				"<li>Storlek: " + mb + " MB</li>" +
+				"<li>Ändrad: " + esc(new Date(file.lastModified).toLocaleString("sv-SE")) + "</li>" +
+				"</ul>"
+			);
+
+			loadCloud(path, file.name);
+		}
+
+		const overlay = document.getElementById("drop_overlay");
+		let dragDepth = 0;
+		const hasFiles = (e) => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes("Files");
+
+		window.addEventListener("dragenter", (e) => {
+			if (!hasFiles(e)) return;
+			e.preventDefault();
+			dragDepth++;
+			overlay.classList.add("active");
+		});
+		window.addEventListener("dragover", (e) => {
+			if (!hasFiles(e)) return;
+			e.preventDefault();
+			e.dataTransfer.dropEffect = "copy";
+		});
+		window.addEventListener("dragleave", (e) => {
+			if (!hasFiles(e)) return;
+			dragDepth = Math.max(0, dragDepth - 1);
+			if (dragDepth === 0) overlay.classList.remove("active");
+		});
+		window.addEventListener("drop", (e) => {
+			if (!hasFiles(e)) return;
+			e.preventDefault();
+			dragDepth = 0;
+			overlay.classList.remove("active");
+			const files = e.dataTransfer.files;
+			if (files.length > 1) {
+				showMsg("Släpp en fil i taget.");
+				return;
+			}
+			if (files.length === 1) handleFile(files[0]);
+		});
+
+		// Filväljare som reserv
+		document.getElementById("pick_file").addEventListener("click", () => {
+			document.getElementById("file_input").click();
+		});
+		document.getElementById("file_input").addEventListener("change", (e) => {
+			if (e.target.files.length) handleFile(e.target.files[0]);
+			e.target.value = "";
+		});
+	}
+
+	main();
+	</script>
+
+	<img id="logo_br" src="./resources/icons/logo.png">
+</body>
+</html>
